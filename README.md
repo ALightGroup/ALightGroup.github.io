@@ -43,8 +43,11 @@ hexo s
 
 
 ### 6、图床
-使用 https://github.com/Molunerfinn/PicGo 将图片上传到github仓库
+使用 https://github.com/Molunerfinn/PicGo 将图片上传到github仓库 </br>
 图传配置：https://picgo.github.io/PicGo-Doc/zh/guide/config.html#github%E5%9B%BE%E5%BA%8A
+
+![](https://raw.githubusercontent.com/ALightGroup/ALightGroup.github.io/alg-img/20221228212653.png)
+
 
 
 
