@@ -44,8 +44,7 @@ hexo s
 
 ### 6、图床
 使用 https://github.com/Molunerfinn/PicGo 将图片上传到github仓库
-图传配置：待补充
-
+图传配置：https://picgo.github.io/PicGo-Doc/zh/guide/config.html#github%E5%9B%BE%E5%BA%8A
 
 
 
