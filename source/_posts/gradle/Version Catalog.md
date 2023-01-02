@@ -100,7 +100,9 @@ dependencyResolutionManagement {
             bundle('appBaseLib', ['coreKtx', 'appcompat', 'material', 'constraintlayout'])
 
             // 声明一个插件
-            // alias('kotlinAndroid').toPluginId('org.jetbrains.kotlin.android').version('1.6.10')
+                     // 声明一个插件
+             alias('kotlin-kapt').toPluginId('org.jetbrains.kotlin.kapt').version("1.7.0")
+             alias('kotlin-parcelize').toPluginId('org.jetbrains.kotlin.plugin.parcelize').version("1.7.0")
 				}
     }
 }
@@ -113,7 +115,8 @@ plugins {
 	......
 
 	// 使用版本目录中声明的插件
-	// alias(libs.plugins.kotlinAndroid)
+	alias libs.plugins.kotlin.kapt
+  alias libs.plugins.kotlin.parcelize
 }
 
 ......
@@ -166,7 +169,8 @@ junit_espresso = { module = "androidx.test.espresso:espresso-core", version = "3
 appBaseLib = ["coreKtx", "appcompat", "material", "constraintlayout"]
 
 [plugins]
-kotlinAndroid = { id = "org.jetbrains.kotlin.android", version = "1.6.10" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 ```
 
 随后在 setting.gradle 中引用该 TOML 文件
@@ -282,8 +286,27 @@ dependencies {
 ```
 
 # 版本依赖总结
+1. 关于 Gradle 的具体版本，上述测试一开始使用的 `gradle-7.3.3-bin.zip` 版本，在声明和引用 plugin 时，一直会报错，提示如下：
 
-1. 声明一个有效的别名
+```
+plugin request for plugin already on the classpath must not include a version
+```
+
+本来 Plugins 的声明在 7.2 以上就可以生效的，但是 7.3.3 任有问题。
+
+建议使用使用 7.4.2 及以上版本方可解决插件不生效的问题
+
+查看当前 gradle 版本
+```
+./gradlew --version 
+```
+
+将当前版本升级到7.4.2
+```
+./gradlew wrapper --gradle-version=7.4.2
+```
+
+2. 声明一个有效的别名
     
     别名必须由一系列标识符组成，由破折号 ( -, 推荐)、下划线 ( _) 或点 ( .) 分隔
     
@@ -292,20 +315,34 @@ groovy将会为别名自动转换为有效的访问器，且在转换过程中�
 
 如果不希望生成子组访问器，则直接使用大写字母区分单词，而不使用`-`,`_`和`.`字符。
 
-1. 版本目录的统一管理
+3. 版本目录的统一管理
     
     TOML 文件可以声明多个，官方建议如果开始使用版本目录，则应该将所有的声明都统一在 TOML文件中，外界均通过版本目录来集成所需的依赖。而依赖需要变更时，则只需修改版目录中对应的条目即可。
     
-2. 关于自动补全  
+4. 关于自动补全，当前版本的Version Calalog因自身原因暂时无法自动代码补全，但是借助IDEA的插件我们可以实现自动代码补全，配置如下：
 
 ```groovy
-dependencies {
+
+// 根目录的build.gradle
+buildscript {
+    dependencies {
         classpath files(libs.class.superclass.protectionDomain.codeSource.location)
+    }
 }
 ```
 
-需要贴一个官方的说明文档
+5. 关于 Version Catalog 的完整demo
 
-和 ALG 项目关联（打广告）
+Version Catalog 版本目录声明仓库
 
-## Plugins的声明暂时还有问题
+[ALG Version Manager](https://github.com/ALightGroup/VersionManager)
+
+版本目录使用
+
+[MetaService](https://github.com/ALightGroup/MetaService)
+
+[MetaFrame](https://github.com/ALightGroup/MetaFrame)
+
+> 引用
+> 
+> [Gradle Sharing Versions](https://docs.gradle.org/current/userguide/platforms.html)
