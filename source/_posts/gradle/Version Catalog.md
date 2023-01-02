@@ -91,7 +91,8 @@ dependencyResolutionManagement {
             alias('junit-ext').to('androidx.test.ext', 'junit').version('1.1.3')
             alias('junit-espresso').to('androidx.test.espresso', 'espresso-core').version('3.4.0')
         
-						// 针对对个相同版本号的依赖，我们可以定一个通用版本号，即将依赖与版本单独声明并引用
+        
+            // 针对对个相同版本号的依赖，我们可以定一个通用版本号，即将依赖与版本单独声明并引用
             version('lifecycle', '2.2.0')
             alias('lifecycleExtensions').to('androidx.lifecycle', 'lifecycle-extensions').versionRef('lifecycle')
             alias('lifecycleRuntime').to('androidx.lifecycle', 'lifecycle-runtime-ktx').versionRef('lifecycle')
@@ -100,7 +101,6 @@ dependencyResolutionManagement {
             bundle('appBaseLib', ['coreKtx', 'appcompat', 'material', 'constraintlayout'])
 
             // 声明一个插件
-                     // 声明一个插件
              alias('kotlin-kapt').toPluginId('org.jetbrains.kotlin.kapt').version("1.7.0")
              alias('kotlin-parcelize').toPluginId('org.jetbrains.kotlin.plugin.parcelize').version("1.7.0")
 				}
@@ -114,29 +114,29 @@ dependencyResolutionManagement {
 plugins {
 	......
 
-	// 使用版本目录中声明的插件
-	alias libs.plugins.kotlin.kapt
-  alias libs.plugins.kotlin.parcelize
+    // 使用版本目录中声明的插件
+    alias libs.plugins.kotlin.kapt
+    alias libs.plugins.kotlin.parcelize
 }
 
 ......
 
 dependencies {
-		// 依赖单个制定的版本目录
+    // 依赖单个制定的版本目录
     implementation libs.coreKtx
     implementation libs.appcompat
     implementation libs.material
     implementation libs.constraintlayout
 
-		implementation libs.lifecycleExtensions
+    implementation libs.lifecycleExtensions
     implementation libs.lifecycleRuntime
 
     testImplementation libs.junit.junit
     androidTestImplementation libs.junit.ext
     androidTestImplementation libs.junit.espresso
 
-		// 依赖版本目录组
-		// implementation libs.bundles.appBaseLib
+    // 依赖版本目录组
+    // implementation libs.bundles.appBaseLib
 }
 ```
 
@@ -180,9 +180,10 @@ settings.gradle
 
 dependencyResolutionManagement {
     
-		......
+    ......
 
-		// 第二种方式使用版本目录
+
+    // 第二种方式使用版本目录
     libs {
         from(files("./libs.versions.toml"))
     }
@@ -196,7 +197,7 @@ dependencyResolutionManagement {
 
 dependencies {
 
-		implementation libs.bundles.appBaseLib
+    implementation libs.bundles.appBaseLib
 
     implementation libs.lifecycleExtensions
     implementation libs.lifecycleRuntime
@@ -258,9 +259,9 @@ settings.gradle
 
 dependencyResolutionManagement {
     
-		......
+    ......
 
-		// 第三种方式使用版本目录
+    // 第三种方式使用版本目录
     libs {
         from("com.alg.plugin.version:catalog:0.0.1")
     }
@@ -274,7 +275,7 @@ dependencyResolutionManagement {
 
 dependencies {
 
-		implementation libs.bundles.appBaseLib
+    implementation libs.bundles.appBaseLib
 
     implementation libs.lifecycleExtensions
     implementation libs.lifecycleRuntime
@@ -286,7 +287,8 @@ dependencies {
 ```
 
 # 版本依赖总结
-1. 关于 Gradle 的具体版本，上述测试一开始使用的 `gradle-7.3.3-bin.zip` 版本，在声明和引用 plugin 时，一直会报错，提示如下：
+## 1. 关于 Gradle 的具体版本
+上述测试一开始使用的 `gradle-7.3.3-bin.zip` 版本，在声明和引用 plugin 时，一直会报错，提示如下：
 
 ```
 plugin request for plugin already on the classpath must not include a version
@@ -306,20 +308,21 @@ plugin request for plugin already on the classpath must not include a version
 ./gradlew wrapper --gradle-version=7.4.2
 ```
 
-2. 声明一个有效的别名
-    
-    别名必须由一系列标识符组成，由破折号 ( -, 推荐)、下划线 ( _) 或点 ( .) 分隔
-    
+## 2. 声明一个有效的别名
+
+别名必须由一系列标识符组成，由破折号 ( -, 推荐)、下划线 ( _) 或点 ( .) 分隔    
 
 groovy将会为别名自动转换为有效的访问器，且在转换过程中，会自动将别名中的`-`,`_`和`.`字符都转换为`.`，如：`groovy-core`, `groovy_json`, `groovy-nio` 将会被转换为 `groovy.core`,  `groovy.json`, `groovy.nio` ，它们均属于同一个 `groovy` 分组。
 
 如果不希望生成子组访问器，则直接使用大写字母区分单词，而不使用`-`,`_`和`.`字符。
 
-3. 版本目录的统一管理
+## 3. 版本目录的统一管理
     
-    TOML 文件可以声明多个，官方建议如果开始使用版本目录，则应该将所有的声明都统一在 TOML文件中，外界均通过版本目录来集成所需的依赖。而依赖需要变更时，则只需修改版目录中对应的条目即可。
+TOML 文件可以声明多个，官方建议如果开始使用版本目录，则应该将所有的声明都统一在 TOML文件中，外界均通过版本目录来集成所需的依赖。而依赖需要变更时，则只需修改版目录中对应的条目即可。
     
-4. 关于自动补全，当前版本的Version Calalog因自身原因暂时无法自动代码补全，但是借助IDEA的插件我们可以实现自动代码补全，配置如下：
+## 4. 关于自动补全
+
+当前版本的Version Calalog因自身原因暂时无法自动代码补全，但是借助IDEA的插件我们可以实现自动代码补全，配置如下：
 
 ```groovy
 
@@ -331,7 +334,7 @@ buildscript {
 }
 ```
 
-5. 关于 Version Catalog 的完整demo
+## 5. 关于 Version Catalog 的完整demo
 
 Version Catalog 版本目录声明仓库
 
@@ -342,6 +345,9 @@ Version Catalog 版本目录声明仓库
 [MetaService](https://github.com/ALightGroup/MetaService)
 
 [MetaFrame](https://github.com/ALightGroup/MetaFrame)
+
+
+****
 
 > 引用
 > 
