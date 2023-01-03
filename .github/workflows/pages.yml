@@ -21,10 +21,9 @@ jobs:
           key: ${{ runner.OS }}-npm-cache
           restore-keys: |
             ${{ runner.OS }}-npm-cache
-      - name: Install hexo Dependencies
-        run: npm uninstall hexo-prism-plugin
-        run: npm install hexo-generator-search --save
-        run: npm i --save hexo-wordcount
+      - run: npm uninstall hexo-prism-plugin
+      - run: npm install hexo-generator-search --save
+      - run: npm i --save hexo-wordcount
       - name: Install Dependencies
         run: npm install
       - name: Build
