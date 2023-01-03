@@ -424,7 +424,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="什么是版本目录"><a href="#什么是版本目录" class="headerlink" title="什么是版本目录"></a>什么是版本目录</h1><h2 id="1-版本目录简介"><a href="#1-版本目录简介" class="headerlink" title="1.版本目录简介"></a>1.版本目录简介</h2><p><code>Central declaration of dependencies</code> （中央依赖声明，即：版本目录）是AGP7提供的一个新特性，用于管理项目中的依赖项列表，将依赖项表示为依赖声明，随后使用者可以直接在 <code>build.gradle</code> 构建脚本使用依赖列表中的依赖声明，而不再直接使用字符串显示依赖的方式依赖。如下所示：</p>
+                <h2 id="什么是版本目录"><a href="#什么是版本目录" class="headerlink" title="什么是版本目录"></a>什么是版本目录</h2><h3 id="1-版本目录简介"><a href="#1-版本目录简介" class="headerlink" title="1.版本目录简介"></a>1.版本目录简介</h3><p><code>Central declaration of dependencies</code> （中央依赖声明，即：版本目录）是AGP7提供的一个新特性，用于管理项目中的依赖项列表，将依赖项表示为依赖声明，随后使用者可以直接在 <code>build.gradle</code> 构建脚本使用依赖列表中的依赖声明，而不再直接使用字符串显示依赖的方式依赖。如下所示：</p>
 <pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin">app<span class="token operator">:</span>build<span class="token punctuation">.</span>gradle
 
 dependencies <span class="token punctuation">&#123;</span>
@@ -436,13 +436,13 @@ dependencies <span class="token punctuation">&#123;</span>
 <p>在版本目录中， <code>libs</code> 为默认推荐的分组别名（也可以自定义分组别名），分组内可以声明任意多个依赖目录，<code>coreKtx</code> 则为我们自己为具体依赖项（”androidx.core:core-ktx:1.7.0”）声明的依赖别名。</p>
 <span id="more"></span>
 
-<h2 id="2-版本目录的优势"><a href="#2-版本目录的优势" class="headerlink" title="2.版本目录的优势"></a>2.版本目录的优势</h2><ul>
+<h3 id="2-版本目录的优势"><a href="#2-版本目录的优势" class="headerlink" title="2.版本目录的优势"></a>2.版本目录的优势</h3><ul>
 <li>Gradle会为每个依赖目录生成一个类型安全的访问器，如：<code>libs.coreKtx</code></li>
 <li>每个依赖目录对构建项目都是可见的，确保依赖项的版本适用于每个子项目或模块</li>
 <li>依赖项可以声明为单个依赖目录，还可以将多个依赖项声明为 <code>依赖目录组</code></li>
 <li>依赖目录中的依赖项，可以将 <code>groudId:artifactId</code> 与 <code>version</code> 分开，将 <code>version</code> 单独声明并在依赖项中引用</li>
 </ul>
-<h1 id="在工程中使用版本目录"><a href="#在工程中使用版本目录" class="headerlink" title="在工程中使用版本目录"></a>在工程中使用版本目录</h1><p>上面提到了使用 <code>libs.coreKtx</code> 替代 <code>&quot;androidx.core:core-ktx:1.7.0&quot;</code>，那我们应该如何声明<code>libs.coreKtx</code> ?</p>
+<h2 id="在工程中使用版本目录"><a href="#在工程中使用版本目录" class="headerlink" title="在工程中使用版本目录"></a>在工程中使用版本目录</h2><p>上面提到了使用 <code>libs.coreKtx</code> 替代 <code>&quot;androidx.core:core-ktx:1.7.0&quot;</code>，那我们应该如何声明<code>libs.coreKtx</code> ?</p>
 <p>gradle中提供了两种构建版本目录的方式：</p>
 <ul>
 <li>使用settings api构建版本目录</li>
@@ -464,7 +464,7 @@ dependencyResolutionManagement <span class="token punctuation">&#123;</span>
 	<span class="token punctuation">...</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="使用-settings-api"><a href="#使用-settings-api" class="headerlink" title="使用 settings api"></a>使用 settings api</h2><p>直接在项目<code>settings.gradle</code> 文件中声明依赖目录</p>
+<h3 id="使用-settings-api"><a href="#使用-settings-api" class="headerlink" title="使用 settings api"></a>使用 settings api</h3><p>直接在项目<code>settings.gradle</code> 文件中声明依赖目录</p>
 <pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">settings<span class="token punctuation">.</span>gradle
 
 dependencyResolutionManagement <span class="token punctuation">&#123;</span>
@@ -528,7 +528,7 @@ dependencies <span class="token punctuation">&#123;</span>
     <span class="token comment">// implementation libs.bundles.appBaseLib</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="使用-TOML-文件"><a href="#使用-TOML-文件" class="headerlink" title="使用 TOML 文件"></a>使用 TOML 文件</h2><p>除了在 <code>settings.gradle</code> 文件中直接声明依赖目录，官方更推荐使用 TOML 文件来声明依赖目录</p>
+<h3 id="使用-TOML-文件"><a href="#使用-TOML-文件" class="headerlink" title="使用 TOML 文件"></a>使用 TOML 文件</h3><p>除了在 <code>settings.gradle</code> 文件中直接声明依赖目录，官方更推荐使用 TOML 文件来声明依赖目录</p>
 <p>首先在项目根目录下创建 <code>libs.versions.toml</code> 文件，并编写如下依赖内容：</p>
 <pre class="line-numbers language-toml" data-language="toml"><code class="language-toml"><span class="token punctuation">[</span><span class="token table class-name">versions</span><span class="token punctuation">]</span>
 <span class="token key property">kotlin</span> <span class="token punctuation">=</span> <span class="token string">"1.7.0"</span>
@@ -590,7 +590,7 @@ dependencies <span class="token punctuation">&#123;</span>
 <p>[libraries] 用于声明依赖的别名</p>
 <p>[bundles] 用于声明依赖包（依赖组）</p>
 <p>[plugins] 用于声明插件</p>
-<h2 id="依赖远程的-TOML-文件"><a href="#依赖远程的-TOML-文件" class="headerlink" title="依赖远程的 TOML 文件"></a>依赖远程的 TOML 文件</h2><p>我们也可以将我们本地编写好的 TOML 文件发布到 maven 上，然后通过远程依赖的方式将其依赖下来使用。编辑插件的 build.gradle 文件，并将其发布到本地maven</p>
+<h3 id="依赖远程的-TOML-文件"><a href="#依赖远程的-TOML-文件" class="headerlink" title="依赖远程的 TOML 文件"></a>依赖远程的 TOML 文件</h3><p>我们也可以将我们本地编写好的 TOML 文件发布到 maven 上，然后通过远程依赖的方式将其依赖下来使用。编辑插件的 build.gradle 文件，并将其发布到本地maven</p>
 <pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">build<span class="token punctuation">.</span>gradle
 
 plugins <span class="token punctuation">&#123;</span>
@@ -645,7 +645,7 @@ dependencies <span class="token punctuation">&#123;</span>
     androidTestImplementation libs<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>espresso
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="版本依赖总结"><a href="#版本依赖总结" class="headerlink" title="版本依赖总结"></a>版本依赖总结</h1><h2 id="1-关于-Gradle-的具体版本"><a href="#1-关于-Gradle-的具体版本" class="headerlink" title="1.关于 Gradle 的具体版本"></a>1.关于 Gradle 的具体版本</h2><p>上述测试一开始使用的 <code>gradle-7.3.3-bin.zip</code> 版本，在声明和引用 plugin 时，一直会报错，提示如下：</p>
+<h2 id="版本依赖总结"><a href="#版本依赖总结" class="headerlink" title="版本依赖总结"></a>版本依赖总结</h2><h3 id="1-关于-Gradle-的具体版本"><a href="#1-关于-Gradle-的具体版本" class="headerlink" title="1.关于 Gradle 的具体版本"></a>1.关于 Gradle 的具体版本</h3><p>上述测试一开始使用的 <code>gradle-7.3.3-bin.zip</code> 版本，在声明和引用 plugin 时，一直会报错，提示如下：</p>
 <pre class="line-numbers language-none"><code class="language-none">plugin request for plugin already on the classpath must not include a version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>本来 Plugins 的声明在 7.2 以上就可以生效的，但是 7.3.3 任有问题。</p>
@@ -656,11 +656,12 @@ dependencies <span class="token punctuation">&#123;</span>
 <p>将当前版本升级到7.4.2</p>
 <pre class="line-numbers language-none"><code class="language-none">.&#x2F;gradlew wrapper --gradle-version&#x3D;7.4.2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="2-声明一个有效的别名"><a href="#2-声明一个有效的别名" class="headerlink" title="2.声明一个有效的别名"></a>2.声明一个有效的别名</h2><p>别名必须由一系列标识符组成，由破折号 ( -, 推荐)、下划线 ( _) 或点 ( .) 分隔    </p>
+
+<h3 id="2-声明一个有效的别名"><a href="#2-声明一个有效的别名" class="headerlink" title="2.声明一个有效的别名"></a>2.声明一个有效的别名</h3><p>别名必须由一系列标识符组成，由破折号 ( -, 推荐)、下划线 ( _) 或点 ( .) 分隔    </p>
 <p>groovy将会为别名自动转换为有效的访问器，且在转换过程中，会自动将别名中的<code>-</code>,<code>_</code>和<code>.</code>字符都转换为<code>.</code>，如：<code>groovy-core</code>, <code>groovy_json</code>, <code>groovy-nio</code> 将会被转换为 <code>groovy.core</code>,  <code>groovy.json</code>, <code>groovy.nio</code> ，它们均属于同一个 <code>groovy</code> 分组。</p>
 <p>如果不希望生成子组访问器，则直接使用大写字母区分单词，而不使用<code>-</code>,<code>_</code>和<code>.</code>字符。</p>
-<h2 id="3-版本目录的统一管理"><a href="#3-版本目录的统一管理" class="headerlink" title="3.版本目录的统一管理"></a>3.版本目录的统一管理</h2><p>TOML 文件可以声明多个，官方建议如果开始使用版本目录，则应该将所有的声明都统一在 TOML文件中，外界均通过版本目录来集成所需的依赖。而依赖需要变更时，则只需修改版目录中对应的条目即可。</p>
-<h2 id="4-关于自动补全"><a href="#4-关于自动补全" class="headerlink" title="4.关于自动补全"></a>4.关于自动补全</h2><p>当前版本的Version Calalog因自身原因暂时无法自动代码补全，但是借助IDEA的插件我们可以实现自动代码补全，配置如下：</p>
+<h3 id="3-版本目录的统一管理"><a href="#3-版本目录的统一管理" class="headerlink" title="3.版本目录的统一管理"></a>3.版本目录的统一管理</h3><p>TOML 文件可以声明多个，官方建议如果开始使用版本目录，则应该将所有的声明都统一在 TOML文件中，外界均通过版本目录来集成所需的依赖。而依赖需要变更时，则只需修改版目录中对应的条目即可。</p>
+<h3 id="4-关于自动补全"><a href="#4-关于自动补全" class="headerlink" title="4.关于自动补全"></a>4.关于自动补全</h3><p>当前版本的Version Calalog因自身原因暂时无法自动代码补全，但是借助IDEA的插件我们可以实现自动代码补全，配置如下：</p>
 <pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">
 <span class="token comment">// 根目录的build.gradle</span>
 buildscript <span class="token punctuation">&#123;</span>
@@ -669,7 +670,8 @@ buildscript <span class="token punctuation">&#123;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="5-关于-Version-Catalog-的完整demo"><a href="#5-关于-Version-Catalog-的完整demo" class="headerlink" title="5.关于 Version Catalog 的完整demo"></a>5.关于 Version Catalog 的完整demo</h2><p>Version Catalog 版本目录声明仓库</p>
+
+<h3 id="5-关于-Version-Catalog-的完整demo"><a href="#5-关于-Version-Catalog-的完整demo" class="headerlink" title="5.关于 Version Catalog 的完整demo"></a>5.关于 Version Catalog 的完整demo</h3><p>Version Catalog 版本目录声明仓库</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/ALightGroup/VersionManager">ALG Version Manager</a></p>
 <p>版本目录使用</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/ALightGroup/MetaService">MetaService</a></p>
