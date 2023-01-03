@@ -1,0 +1,1387 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Version Catalog(中央依赖声明，即：版本目录), ALG团队">
+    <meta name="description" content="什么是版本目录1.版本目录简介Central declaration of dependencies （中央依赖声明，即：版本目录）是AGP7提供的一个新特性，用于管理项目中的依赖项列表，将依赖项表示为依赖声明，随后使用者可以直接在 bui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Version Catalog(中央依赖声明，即：版本目录) | ALG团队</title>
+    <link rel="icon" type="image/png" href="/logo.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">ALG团队</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">ALG团队</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Version Catalog(中央依赖声明，即：版本目录)</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/gradle/">
+                                <span class="chip bg-color">gradle</span>
+                            </a>
+                        
+                            <a href="/tags/android/">
+                                <span class="chip bg-color">android</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/gradle/" class="post-category">
+                                gradle
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-12-28
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    8 分
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="什么是版本目录"><a href="#什么是版本目录" class="headerlink" title="什么是版本目录"></a>什么是版本目录</h1><h2 id="1-版本目录简介"><a href="#1-版本目录简介" class="headerlink" title="1.版本目录简介"></a>1.版本目录简介</h2><p><code>Central declaration of dependencies</code> （中央依赖声明，即：版本目录）是AGP7提供的一个新特性，用于管理项目中的依赖项列表，将依赖项表示为依赖声明，随后使用者可以直接在 <code>build.gradle</code> 构建脚本使用依赖列表中的依赖声明，而不再直接使用字符串显示依赖的方式依赖。如下所示：</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin">app<span class="token operator">:</span>build<span class="token punctuation">.</span>gradle
+
+dependencies <span class="token punctuation">&#123;</span>
+		<span class="token comment">// 使用implementation(libs.kotlin.core)替代implementation "androidx.core:core-ktx:1.7.0"</span>
+	  <span class="token function">implementation</span><span class="token punctuation">(</span>libs<span class="token punctuation">.</span>coreKtx<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如上代码代码块所示， <code>libs.coreKtx</code> 是Gradle为我们自己定义的依赖目录自动生成的 <code>访问器</code>，通过它我们可以直接访问到我们定义的真正的依赖 <code>&quot;androidx.core:core-ktx:1.7.0&quot;</code> 而<code>coreKtx</code> 和 <code>&quot;androidx.core:core-ktx:1.7.0&quot;</code> 则称之为一组 <code>依赖目录</code></p>
+<p>在版本目录中， <code>libs</code> 为默认推荐的分组别名（也可以自定义分组别名），分组内可以声明任意多个依赖目录，<code>coreKtx</code> 则为我们自己为具体依赖项（”androidx.core:core-ktx:1.7.0”）声明的依赖别名。</p>
+<span id="more"></span>
+
+<h2 id="2-版本目录的优势"><a href="#2-版本目录的优势" class="headerlink" title="2.版本目录的优势"></a>2.版本目录的优势</h2><ul>
+<li>Gradle会为每个依赖目录生成一个类型安全的访问器，如：<code>libs.coreKtx</code></li>
+<li>每个依赖目录对构建项目都是可见的，确保依赖项的版本适用于每个子项目或模块</li>
+<li>依赖项可以声明为单个依赖目录，还可以将多个依赖项声明为 <code>依赖目录组</code></li>
+<li>依赖目录中的依赖项，可以将 <code>groudId:artifactId</code> 与 <code>version</code> 分开，将 <code>version</code> 单独声明并在依赖项中引用</li>
+</ul>
+<h1 id="在工程中使用版本目录"><a href="#在工程中使用版本目录" class="headerlink" title="在工程中使用版本目录"></a>在工程中使用版本目录</h1><p>上面提到了使用 <code>libs.coreKtx</code> 替代 <code>&quot;androidx.core:core-ktx:1.7.0&quot;</code>，那我们应该如何声明<code>libs.coreKtx</code> ?</p>
+<p>gradle中提供了两种构建版本目录的方式：</p>
+<ul>
+<li>使用settings api构建版本目录</li>
+<li>使用TOML文件格式构建版本目录</li>
+</ul>
+<p><strong>使用之前</strong></p>
+<p>当前Version Catalog为预览版本，并非正式版，使用之前需要在 <code>settings.gradle</code> 中单独开启功能特性</p>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">settings<span class="token punctuation">.</span>gradle
+
+pluginManagement <span class="token punctuation">&#123;</span>
+	 <span class="token punctuation">...</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// VERSION_CATALOGS当前并不是稳定版本功能</span>
+<span class="token comment">// 所以需要预先开启功能预览 enableFeaturePreview('FEATURE')</span>
+<span class="token function">enableFeaturePreview</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">"VERSION_CATALOGS"</span></span><span class="token punctuation">)</span>
+
+dependencyResolutionManagement <span class="token punctuation">&#123;</span>
+	<span class="token punctuation">...</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="使用-settings-api"><a href="#使用-settings-api" class="headerlink" title="使用 settings api"></a>使用 settings api</h2><p>直接在项目<code>settings.gradle</code> 文件中声明依赖目录</p>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">settings<span class="token punctuation">.</span>gradle
+
+dependencyResolutionManagement <span class="token punctuation">&#123;</span>
+    
+		<span class="token punctuation">......</span>
+
+    <span class="token comment">// 编写版本目录的依赖库</span>
+    versionCatalogs <span class="token punctuation">&#123;</span>
+        libs <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 分别声明依赖别名('coreKtx')，groupId('androidx.core')，artifactId('core-ktx')以及版本('1.7.0')</span>
+            <span class="token function">alias</span><span class="token punctuation">(</span><span class="token string">'coreKtx'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">to</span><span class="token punctuation">(</span><span class="token string">'androidx.core'</span><span class="token punctuation">,</span> <span class="token string">'core-ktx'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">version</span><span class="token punctuation">(</span><span class="token string">'1.7.0'</span><span class="token punctuation">)</span>
+            <span class="token function">alias</span><span class="token punctuation">(</span><span class="token string">'appcompat'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">to</span><span class="token punctuation">(</span><span class="token string">'androidx.appcompat'</span><span class="token punctuation">,</span> <span class="token string">'appcompat'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">version</span><span class="token punctuation">(</span><span class="token string">'1.3.0'</span><span class="token punctuation">)</span>
+            <span class="token function">alias</span><span class="token punctuation">(</span><span class="token string">'material'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">to</span><span class="token punctuation">(</span><span class="token string">'com.google.android.material'</span><span class="token punctuation">,</span> <span class="token string">'material'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">version</span><span class="token punctuation">(</span><span class="token string">'1.4.0'</span><span class="token punctuation">)</span>
+            <span class="token function">alias</span><span class="token punctuation">(</span><span class="token string">'constraintlayout'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">to</span><span class="token punctuation">(</span><span class="token string">'androidx.constraintlayout'</span><span class="token punctuation">,</span> <span class="token string">'constraintlayout'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">version</span><span class="token punctuation">(</span><span class="token string">'2.0.4'</span><span class="token punctuation">)</span>
+            <span class="token function">alias</span><span class="token punctuation">(</span><span class="token string">'junit-junit'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">to</span><span class="token punctuation">(</span><span class="token string">'junit'</span><span class="token punctuation">,</span> <span class="token string">'junit'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">version</span><span class="token punctuation">(</span><span class="token string">'4.13.2'</span><span class="token punctuation">)</span>
+            <span class="token function">alias</span><span class="token punctuation">(</span><span class="token string">'junit-ext'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">to</span><span class="token punctuation">(</span><span class="token string">'androidx.test.ext'</span><span class="token punctuation">,</span> <span class="token string">'junit'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">version</span><span class="token punctuation">(</span><span class="token string">'1.1.3'</span><span class="token punctuation">)</span>
+            <span class="token function">alias</span><span class="token punctuation">(</span><span class="token string">'junit-espresso'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">to</span><span class="token punctuation">(</span><span class="token string">'androidx.test.espresso'</span><span class="token punctuation">,</span> <span class="token string">'espresso-core'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">version</span><span class="token punctuation">(</span><span class="token string">'3.4.0'</span><span class="token punctuation">)</span>
+        
+        
+            <span class="token comment">// 针对对个相同版本号的依赖，我们可以定一个通用版本号，即将依赖与版本单独声明并引用</span>
+            <span class="token function">version</span><span class="token punctuation">(</span><span class="token string">'lifecycle'</span><span class="token punctuation">,</span> <span class="token string">'2.2.0'</span><span class="token punctuation">)</span>
+            <span class="token function">alias</span><span class="token punctuation">(</span><span class="token string">'lifecycleExtensions'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">to</span><span class="token punctuation">(</span><span class="token string">'androidx.lifecycle'</span><span class="token punctuation">,</span> <span class="token string">'lifecycle-extensions'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">versionRef</span><span class="token punctuation">(</span><span class="token string">'lifecycle'</span><span class="token punctuation">)</span>
+            <span class="token function">alias</span><span class="token punctuation">(</span><span class="token string">'lifecycleRuntime'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">to</span><span class="token punctuation">(</span><span class="token string">'androidx.lifecycle'</span><span class="token punctuation">,</span> <span class="token string">'lifecycle-runtime-ktx'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">versionRef</span><span class="token punctuation">(</span><span class="token string">'lifecycle'</span><span class="token punctuation">)</span>
+
+						<span class="token comment">// 除了单个依赖声明，我们也可以将多个依赖项声明为一个依赖组</span>
+            <span class="token function">bundle</span><span class="token punctuation">(</span><span class="token string">'appBaseLib'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'coreKtx'</span><span class="token punctuation">,</span> <span class="token string">'appcompat'</span><span class="token punctuation">,</span> <span class="token string">'material'</span><span class="token punctuation">,</span> <span class="token string">'constraintlayout'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+            <span class="token comment">// 声明一个插件</span>
+             <span class="token function">alias</span><span class="token punctuation">(</span><span class="token string">'kotlin-kapt'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toPluginId</span><span class="token punctuation">(</span><span class="token string">'org.jetbrains.kotlin.kapt'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">version</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">"1.7.0"</span></span><span class="token punctuation">)</span>
+             <span class="token function">alias</span><span class="token punctuation">(</span><span class="token string">'kotlin-parcelize'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toPluginId</span><span class="token punctuation">(</span><span class="token string">'org.jetbrains.kotlin.plugin.parcelize'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">version</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">"1.7.0"</span></span><span class="token punctuation">)</span>
+				<span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>随即在app <code>build.gradle</code> 中使用版本目录</p>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">plugins <span class="token punctuation">&#123;</span>
+	<span class="token punctuation">......</span>
+
+    <span class="token comment">// 使用版本目录中声明的插件</span>
+    alias libs<span class="token punctuation">.</span>plugins<span class="token punctuation">.</span>kotlin<span class="token punctuation">.</span>kapt
+    alias libs<span class="token punctuation">.</span>plugins<span class="token punctuation">.</span>kotlin<span class="token punctuation">.</span>parcelize
+<span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">......</span>
+
+dependencies <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 依赖单个制定的版本目录</span>
+    implementation libs<span class="token punctuation">.</span>coreKtx
+    implementation libs<span class="token punctuation">.</span>appcompat
+    implementation libs<span class="token punctuation">.</span>material
+    implementation libs<span class="token punctuation">.</span>constraintlayout
+
+    implementation libs<span class="token punctuation">.</span>lifecycleExtensions
+    implementation libs<span class="token punctuation">.</span>lifecycleRuntime
+
+    testImplementation libs<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>junit
+    androidTestImplementation libs<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>ext
+    androidTestImplementation libs<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>espresso
+
+    <span class="token comment">// 依赖版本目录组</span>
+    <span class="token comment">// implementation libs.bundles.appBaseLib</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="使用-TOML-文件"><a href="#使用-TOML-文件" class="headerlink" title="使用 TOML 文件"></a>使用 TOML 文件</h2><p>除了在 <code>settings.gradle</code> 文件中直接声明依赖目录，官方更推荐使用 TOML 文件来声明依赖目录</p>
+<p>首先在项目根目录下创建 <code>libs.versions.toml</code> 文件，并编写如下依赖内容：</p>
+<pre class="line-numbers language-toml" data-language="toml"><code class="language-toml"><span class="token punctuation">[</span><span class="token table class-name">versions</span><span class="token punctuation">]</span>
+<span class="token key property">kotlin</span> <span class="token punctuation">=</span> <span class="token string">"1.7.0"</span>
+<span class="token key property">appcompat</span> <span class="token punctuation">=</span> <span class="token string">"1.3.0"</span>
+<span class="token key property">material</span> <span class="token punctuation">=</span> <span class="token string">"1.4.0"</span>
+<span class="token key property">constraintlayout</span> <span class="token punctuation">=</span> <span class="token string">"2.0.4"</span>
+<span class="token key property">lifecycle</span> <span class="token punctuation">=</span> <span class="token string">"2.2.0"</span>
+
+<span class="token punctuation">[</span><span class="token table class-name">libraries</span><span class="token punctuation">]</span>
+<span class="token key property">coreKtx</span> <span class="token punctuation">=</span> <span class="token punctuation">&#123;</span> <span class="token key property">module</span> <span class="token punctuation">=</span> <span class="token string">"androidx.core:core-ktx"</span><span class="token punctuation">,</span> <span class="token key property">version.ref</span> <span class="token punctuation">=</span> <span class="token string">"kotlin"</span> <span class="token punctuation">&#125;</span>
+<span class="token key property">appcompat</span> <span class="token punctuation">=</span> <span class="token punctuation">&#123;</span> <span class="token key property">module</span> <span class="token punctuation">=</span> <span class="token string">"androidx.appcompat:appcompat"</span><span class="token punctuation">,</span> <span class="token key property">version.ref</span> <span class="token punctuation">=</span> <span class="token string">"appcompat"</span> <span class="token punctuation">&#125;</span>
+<span class="token key property">material</span> <span class="token punctuation">=</span> <span class="token punctuation">&#123;</span> <span class="token key property">module</span> <span class="token punctuation">=</span> <span class="token string">"com.google.android.material:material"</span><span class="token punctuation">,</span> <span class="token key property">version.ref</span> <span class="token punctuation">=</span> <span class="token string">"material"</span> <span class="token punctuation">&#125;</span>
+<span class="token key property">constraintlayout</span> <span class="token punctuation">=</span> <span class="token punctuation">&#123;</span> <span class="token key property">module</span> <span class="token punctuation">=</span> <span class="token string">"androidx.constraintlayout:constraintlayout"</span><span class="token punctuation">,</span> <span class="token key property">version.ref</span> <span class="token punctuation">=</span> <span class="token string">"constraintlayout"</span> <span class="token punctuation">&#125;</span>
+<span class="token key property">lifecycleExtensions</span> <span class="token punctuation">=</span> <span class="token punctuation">&#123;</span> <span class="token key property">module</span> <span class="token punctuation">=</span> <span class="token string">"androidx.lifecycle:lifecycle-extensions"</span><span class="token punctuation">,</span> <span class="token key property">version.ref</span> <span class="token punctuation">=</span> <span class="token string">"lifecycle"</span> <span class="token punctuation">&#125;</span>
+<span class="token key property">lifecycleRuntime</span> <span class="token punctuation">=</span> <span class="token punctuation">&#123;</span> <span class="token key property">module</span> <span class="token punctuation">=</span> <span class="token string">"androidx.lifecycle:lifecycle-runtime-ktx"</span><span class="token punctuation">,</span> <span class="token key property">version.ref</span> <span class="token punctuation">=</span> <span class="token string">"lifecycle"</span> <span class="token punctuation">&#125;</span>
+<span class="token key property">junit-junit</span> <span class="token punctuation">=</span> <span class="token punctuation">&#123;</span> <span class="token key property">module</span> <span class="token punctuation">=</span> <span class="token string">"junit:junit"</span><span class="token punctuation">,</span> <span class="token key property">version</span> <span class="token punctuation">=</span> <span class="token string">"4.13.2"</span> <span class="token punctuation">&#125;</span>
+<span class="token key property">junit_ext</span> <span class="token punctuation">=</span> <span class="token punctuation">&#123;</span> <span class="token key property">module</span> <span class="token punctuation">=</span> <span class="token string">"androidx.test.ext:junit"</span><span class="token punctuation">,</span> <span class="token key property">version</span> <span class="token punctuation">=</span> <span class="token string">"1.1.3"</span> <span class="token punctuation">&#125;</span>
+<span class="token key property">junit_espresso</span> <span class="token punctuation">=</span> <span class="token punctuation">&#123;</span> <span class="token key property">module</span> <span class="token punctuation">=</span> <span class="token string">"androidx.test.espresso:espresso-core"</span><span class="token punctuation">,</span> <span class="token key property">version</span> <span class="token punctuation">=</span> <span class="token string">"3.4.0"</span> <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">[</span><span class="token table class-name">bundles</span><span class="token punctuation">]</span>
+<span class="token key property">appBaseLib</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">"coreKtx"</span><span class="token punctuation">,</span> <span class="token string">"appcompat"</span><span class="token punctuation">,</span> <span class="token string">"material"</span><span class="token punctuation">,</span> <span class="token string">"constraintlayout"</span><span class="token punctuation">]</span>
+
+<span class="token punctuation">[</span><span class="token table class-name">plugins</span><span class="token punctuation">]</span>
+<span class="token key property">kotlin-kapt</span> <span class="token punctuation">=</span> <span class="token punctuation">&#123;</span> <span class="token key property">id</span> <span class="token punctuation">=</span> <span class="token string">"org.jetbrains.kotlin.kapt"</span><span class="token punctuation">,</span> <span class="token key property">version.ref</span> <span class="token punctuation">=</span> <span class="token string">"kotlin"</span> <span class="token punctuation">&#125;</span>
+<span class="token key property">kotlin-parcelize</span> <span class="token punctuation">=</span> <span class="token punctuation">&#123;</span> <span class="token key property">id</span> <span class="token punctuation">=</span> <span class="token string">"org.jetbrains.kotlin.plugin.parcelize"</span><span class="token punctuation">,</span> <span class="token key property">version.ref</span> <span class="token punctuation">=</span> <span class="token string">"kotlin"</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>随后在 setting.gradle 中引用该 TOML 文件</p>
+<pre class="line-numbers language-toml" data-language="toml"><code class="language-toml">settings<span class="token punctuation">.</span>gradle
+
+dependencyResolutionManagement <span class="token punctuation">&#123;</span>
+    
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+
+    // 第二种方式使用版本目录
+    libs <span class="token punctuation">&#123;</span>
+        from(files(<span class="token string">"./libs.versions.toml"</span>))
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后在app <code>build.gradle</code> 中使用 TOML 文件中声明的依赖</p>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy"><span class="token punctuation">......</span>
+
+dependencies <span class="token punctuation">&#123;</span>
+
+    implementation libs<span class="token punctuation">.</span>bundles<span class="token punctuation">.</span>appBaseLib
+
+    implementation libs<span class="token punctuation">.</span>lifecycleExtensions
+    implementation libs<span class="token punctuation">.</span>lifecycleRuntime
+
+    testImplementation libs<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>junit
+    androidTestImplementation libs<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>ext
+    androidTestImplementation libs<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>espresso
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>接下来，我们再来详细看看 TOML 文件的一些细节。</p>
+<p>TOML 文件由4个主要部分组成</p>
+<p>[versions] 用于声明可以被依赖项引用的版本</p>
+<p>[libraries] 用于声明依赖的别名</p>
+<p>[bundles] 用于声明依赖包（依赖组）</p>
+<p>[plugins] 用于声明插件</p>
+<h2 id="依赖远程的-TOML-文件"><a href="#依赖远程的-TOML-文件" class="headerlink" title="依赖远程的 TOML 文件"></a>依赖远程的 TOML 文件</h2><p>我们也可以将我们本地编写好的 TOML 文件发布到 maven 上，然后通过远程依赖的方式将其依赖下来使用。编辑插件的 build.gradle 文件，并将其发布到本地maven</p>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">build<span class="token punctuation">.</span>gradle
+
+plugins <span class="token punctuation">&#123;</span>
+  <span class="token punctuation">......</span>
+  id <span class="token string">'version-catalog'</span>
+  id <span class="token string">'maven-publish'</span>
+<span class="token punctuation">&#125;</span>
+
+catalog <span class="token punctuation">&#123;</span>
+    <span class="token comment">// declare the aliases, bundles and versions in this block</span>
+    versionCatalog <span class="token punctuation">&#123;</span>
+        from <span class="token function">files</span><span class="token punctuation">(</span><span class="token string">'../libs.versions.toml'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+publishing <span class="token punctuation">&#123;</span>
+    publications <span class="token punctuation">&#123;</span>
+        <span class="token function">maven</span><span class="token punctuation">(</span>MavenPublication<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            groupId <span class="token operator">=</span> <span class="token string">'com.alg.plugin.version'</span>
+            artifactId <span class="token operator">=</span> <span class="token string">'catalog'</span>
+            version <span class="token operator">=</span> <span class="token string">'0.0.1'</span>
+            from components<span class="token punctuation">.</span>versionCatalog
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在 setting.gradle 中依赖远程的 TOML 文件</p>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">settings<span class="token punctuation">.</span>gradle
+
+dependencyResolutionManagement <span class="token punctuation">&#123;</span>
+    
+    <span class="token punctuation">......</span>
+
+    <span class="token comment">// 第三种方式使用版本目录</span>
+    libs <span class="token punctuation">&#123;</span>
+        <span class="token function">from</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">"com.alg.plugin.version:catalog:0.0.1"</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后在app <code>build.gradle</code> 中使用 TOML 文件中声明的依赖</p>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy"><span class="token punctuation">......</span>
+
+dependencies <span class="token punctuation">&#123;</span>
+
+    implementation libs<span class="token punctuation">.</span>bundles<span class="token punctuation">.</span>appBaseLib
+
+    implementation libs<span class="token punctuation">.</span>lifecycleExtensions
+    implementation libs<span class="token punctuation">.</span>lifecycleRuntime
+
+    testImplementation libs<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>junit
+    androidTestImplementation libs<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>ext
+    androidTestImplementation libs<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>espresso
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="版本依赖总结"><a href="#版本依赖总结" class="headerlink" title="版本依赖总结"></a>版本依赖总结</h1><h2 id="1-关于-Gradle-的具体版本"><a href="#1-关于-Gradle-的具体版本" class="headerlink" title="1. 关于 Gradle 的具体版本"></a>1. 关于 Gradle 的具体版本</h2><p>上述测试一开始使用的 <code>gradle-7.3.3-bin.zip</code> 版本，在声明和引用 plugin 时，一直会报错，提示如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">plugin request for plugin already on the classpath must not include a version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>本来 Plugins 的声明在 7.2 以上就可以生效的，但是 7.3.3 任有问题。</p>
+<p>建议使用使用 7.4.2 及以上版本方可解决插件不生效的问题</p>
+<p>查看当前 gradle 版本</p>
+<pre class="line-numbers language-none"><code class="language-none">.&#x2F;gradlew --version <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>将当前版本升级到7.4.2</p>
+<pre class="line-numbers language-none"><code class="language-none">.&#x2F;gradlew wrapper --gradle-version&#x3D;7.4.2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="2-声明一个有效的别名"><a href="#2-声明一个有效的别名" class="headerlink" title="2. 声明一个有效的别名"></a>2. 声明一个有效的别名</h2><p>别名必须由一系列标识符组成，由破折号 ( -, 推荐)、下划线 ( _) 或点 ( .) 分隔    </p>
+<p>groovy将会为别名自动转换为有效的访问器，且在转换过程中，会自动将别名中的<code>-</code>,<code>_</code>和<code>.</code>字符都转换为<code>.</code>，如：<code>groovy-core</code>, <code>groovy_json</code>, <code>groovy-nio</code> 将会被转换为 <code>groovy.core</code>,  <code>groovy.json</code>, <code>groovy.nio</code> ，它们均属于同一个 <code>groovy</code> 分组。</p>
+<p>如果不希望生成子组访问器，则直接使用大写字母区分单词，而不使用<code>-</code>,<code>_</code>和<code>.</code>字符。</p>
+<h2 id="3-版本目录的统一管理"><a href="#3-版本目录的统一管理" class="headerlink" title="3. 版本目录的统一管理"></a>3. 版本目录的统一管理</h2><p>TOML 文件可以声明多个，官方建议如果开始使用版本目录，则应该将所有的声明都统一在 TOML文件中，外界均通过版本目录来集成所需的依赖。而依赖需要变更时，则只需修改版目录中对应的条目即可。</p>
+<h2 id="4-关于自动补全"><a href="#4-关于自动补全" class="headerlink" title="4. 关于自动补全"></a>4. 关于自动补全</h2><p>当前版本的Version Calalog因自身原因暂时无法自动代码补全，但是借助IDEA的插件我们可以实现自动代码补全，配置如下：</p>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">
+<span class="token comment">// 根目录的build.gradle</span>
+buildscript <span class="token punctuation">&#123;</span>
+    dependencies <span class="token punctuation">&#123;</span>
+        classpath <span class="token function">files</span><span class="token punctuation">(</span>libs<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span>superclass<span class="token punctuation">.</span>protectionDomain<span class="token punctuation">.</span>codeSource<span class="token punctuation">.</span>location<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="5-关于-Version-Catalog-的完整demo"><a href="#5-关于-Version-Catalog-的完整demo" class="headerlink" title="5. 关于 Version Catalog 的完整demo"></a>5. 关于 Version Catalog 的完整demo</h2><p>Version Catalog 版本目录声明仓库</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ALightGroup/VersionManager">ALG Version Manager</a></p>
+<p>版本目录使用</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ALightGroup/MetaService">MetaService</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ALightGroup/MetaFrame">MetaFrame</a></p>
+<hr>
+<blockquote>
+<p>引用</p>
+<p><a target="_blank" rel="noopener" href="https://docs.gradle.org/current/userguide/platforms.html">Gradle Sharing Versions</a></p>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">alg</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2022/12/28/gradle/Version%20Catalog/">http://example.com/2022/12/28/gradle/Version%20Catalog/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">alg</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/gradle/">
+                                    <span class="chip bg-color">gradle</span>
+                                </a>
+                            
+                                <a href="/tags/android/">
+                                    <span class="chip bg-color">android</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/12/28/gradle/Version%20Catalog/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Version Catalog(中央依赖声明，即：版本目录)">
+                        
+                        <span class="card-title">Version Catalog(中央依赖声明，即：版本目录)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            什么是版本目录1.版本目录简介Central declaration of dependencies （中央依赖声明，即：版本目录）是AGP7提供的一个新特性，用于管理项目中的依赖项列表，将依赖项表示为依赖声明，随后使用者可以直接在 bui
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/gradle/" class="post-category">
+                                    gradle
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/gradle/">
+                        <span class="chip bg-color">gradle</span>
+                    </a>
+                    
+                    <a href="/tags/android/">
+                        <span class="chip bg-color">android</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/12/28/gradle/Version%20Catalog/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Version Catalog(中央依赖声明，即：版本目录)">
+                        
+                        <span class="card-title">Version Catalog(中央依赖声明，即：版本目录)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            什么是版本目录1.版本目录简介Central declaration of dependencies （中央依赖声明，即：版本目录）是AGP7提供的一个新特性，用于管理项目中的依赖项列表，将依赖项表示为依赖声明，随后使用者可以直接在 bui
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/gradle/" class="post-category">
+                                    gradle
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/gradle/">
+                        <span class="chip bg-color">gradle</span>
+                    </a>
+                    
+                    <a href="/tags/android/">
+                        <span class="chip bg-color">android</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: ALG团队<br />'
+            + '文章作者: alg<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">alg</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/ALightGroup" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
