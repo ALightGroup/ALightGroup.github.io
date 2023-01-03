@@ -1,9 +1,16 @@
 ## 文章推送步骤
 
-### 1、安装hexo
+### 1、安装
 
+* 安装hexo
 https://github.com/hexojs/hexo
 
+* 安装依赖
+```sh
+npm uninstall hexo-prism-plugin
+npm install hexo-generator-search --save
+npm i --save hexo-wordcount
+```
 
 ### 2、clone 工程
 ```
