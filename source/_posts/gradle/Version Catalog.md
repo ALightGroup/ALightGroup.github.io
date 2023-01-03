@@ -39,6 +39,7 @@ dependencies {
 - 依赖项可以声明为单个依赖目录，还可以将多个依赖项声明为 `依赖目录组`
 - 依赖目录中的依赖项，可以将 `groudId:artifactId` 与 `version` 分开，将 `version` 单独声明并在依赖项中引用
 
+
 # 在工程中使用版本目录
 
 上面提到了使用 `libs.coreKtx` 替代 `"androidx.core:core-ktx:1.7.0"`，那我们应该如何声明`libs.coreKtx` ?
@@ -287,7 +288,7 @@ dependencies {
 ```
 
 # 版本依赖总结
-## 1. 关于 Gradle 的具体版本
+## 1.关于 Gradle 的具体版本
 上述测试一开始使用的 `gradle-7.3.3-bin.zip` 版本，在声明和引用 plugin 时，一直会报错，提示如下：
 
 ```
@@ -308,7 +309,7 @@ plugin request for plugin already on the classpath must not include a version
 ./gradlew wrapper --gradle-version=7.4.2
 ```
 
-## 2. 声明一个有效的别名
+## 2.声明一个有效的别名
 
 别名必须由一系列标识符组成，由破折号 ( -, 推荐)、下划线 ( _) 或点 ( .) 分隔    
 
@@ -316,11 +317,11 @@ groovy将会为别名自动转换为有效的访问器，且在转换过程中�
 
 如果不希望生成子组访问器，则直接使用大写字母区分单词，而不使用`-`,`_`和`.`字符。
 
-## 3. 版本目录的统一管理
+## 3.版本目录的统一管理
     
 TOML 文件可以声明多个，官方建议如果开始使用版本目录，则应该将所有的声明都统一在 TOML文件中，外界均通过版本目录来集成所需的依赖。而依赖需要变更时，则只需修改版目录中对应的条目即可。
     
-## 4. 关于自动补全
+## 4.关于自动补全
 
 当前版本的Version Calalog因自身原因暂时无法自动代码补全，但是借助IDEA的插件我们可以实现自动代码补全，配置如下：
 
@@ -334,7 +335,7 @@ buildscript {
 }
 ```
 
-## 5. 关于 Version Catalog 的完整demo
+## 5.关于 Version Catalog 的完整demo
 
 Version Catalog 版本目录声明仓库
 
