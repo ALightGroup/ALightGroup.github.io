@@ -9,10 +9,9 @@ tags:
 categories: gradle
 ---
 
+## 什么是版本目录
 
-# 什么是版本目录
-
-## 1.版本目录简介
+### 1.版本目录简介
 
 `Central declaration of dependencies` （中央依赖声明，即：版本目录）是AGP7提供的一个新特性，用于管理项目中的依赖项列表，将依赖项表示为依赖声明，随后使用者可以直接在 `build.gradle` 构建脚本使用依赖列表中的依赖声明，而不再直接使用字符串显示依赖的方式依赖。如下所示：
 
@@ -32,7 +31,7 @@ dependencies {
 
 <!--more-->
 
-## 2.版本目录的优势
+### 2.版本目录的优势
 
 - Gradle会为每个依赖目录生成一个类型安全的访问器，如：`libs.coreKtx`
 - 每个依赖目录对构建项目都是可见的，确保依赖项的版本适用于每个子项目或模块
@@ -40,7 +39,7 @@ dependencies {
 - 依赖目录中的依赖项，可以将 `groudId:artifactId` 与 `version` 分开，将 `version` 单独声明并在依赖项中引用
 
 
-# 在工程中使用版本目录
+## 在工程中使用版本目录
 
 上面提到了使用 `libs.coreKtx` 替代 `"androidx.core:core-ktx:1.7.0"`，那我们应该如何声明`libs.coreKtx` ?
 
@@ -69,7 +68,7 @@ dependencyResolutionManagement {
 }
 ```
 
-## 使用 settings api
+### 使用 settings api
 
 直接在项目`settings.gradle` 文件中声明依赖目录
 
@@ -141,7 +140,7 @@ dependencies {
 }
 ```
 
-## 使用 TOML 文件
+### 使用 TOML 文件
 
 除了在 `settings.gradle` 文件中直接声明依赖目录，官方更推荐使用 TOML 文件来声明依赖目录
 
@@ -221,7 +220,7 @@ TOML 文件由4个主要部分组成
 
 [plugins] 用于声明插件
 
-## 依赖远程的 TOML 文件
+### 依赖远程的 TOML 文件
 
 我们也可以将我们本地编写好的 TOML 文件发布到 maven 上，然后通过远程依赖的方式将其依赖下来使用。编辑插件的 build.gradle 文件，并将其发布到本地maven
 
@@ -287,8 +286,9 @@ dependencies {
 }
 ```
 
-# 版本依赖总结
-## 1.关于 Gradle 的具体版本
+## 版本依赖总结
+
+### 1.关于 Gradle 的具体版本
 上述测试一开始使用的 `gradle-7.3.3-bin.zip` 版本，在声明和引用 plugin 时，一直会报错，提示如下：
 
 ```
@@ -309,7 +309,8 @@ plugin request for plugin already on the classpath must not include a version
 ./gradlew wrapper --gradle-version=7.4.2
 ```
 
-## 2.声明一个有效的别名
+
+### 2.声明一个有效的别名
 
 别名必须由一系列标识符组成，由破折号 ( -, 推荐)、下划线 ( _) 或点 ( .) 分隔    
 
@@ -317,11 +318,13 @@ groovy将会为别名自动转换为有效的访问器，且在转换过程中�
 
 如果不希望生成子组访问器，则直接使用大写字母区分单词，而不使用`-`,`_`和`.`字符。
 
-## 3.版本目录的统一管理
+
+### 3.版本目录的统一管理
     
 TOML 文件可以声明多个，官方建议如果开始使用版本目录，则应该将所有的声明都统一在 TOML文件中，外界均通过版本目录来集成所需的依赖。而依赖需要变更时，则只需修改版目录中对应的条目即可。
     
-## 4.关于自动补全
+
+### 4.关于自动补全
 
 当前版本的Version Calalog因自身原因暂时无法自动代码补全，但是借助IDEA的插件我们可以实现自动代码补全，配置如下：
 
@@ -335,7 +338,8 @@ buildscript {
 }
 ```
 
-## 5.关于 Version Catalog 的完整demo
+
+### 5.关于 Version Catalog 的完整demo
 
 Version Catalog 版本目录声明仓库
 
