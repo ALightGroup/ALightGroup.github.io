@@ -24,11 +24,20 @@ git clone https://github.com/ALightGroup/ALightGroup.github.io
 title: Android oneDrive 集成（一）-- SDK申请
 toc: true
 date: 2021-02-09 16:16:22
+author: <a href="https://github.com/AriaLyy">AriaLyy</a>   
+revision: 
 tags: 
   - onedrive
 categories: android
 ---
 ```
+
+`author`：文章作者，如果希望进行跳转可以使用a标签，如
+```
+author: <a href="https://github.com/AriaLyy">AriaLyy</a>
+```
+
+`revision`: 审校团队，同样支持a标签，如果没有审校团队，留空
 
 如果需要分割文章，需要添加
 ```

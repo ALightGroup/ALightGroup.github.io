@@ -3,6 +3,8 @@
 title: Version Catalog(中央依赖声明，即：版本目录)
 toc: true
 date: 2022-12-28 20:16:22
+author: <a href="https://github.com/Discredited">Jun</a>
+revision: <a href="https://github.com/ALightGroup">ALG</a>
 tags: 
   - gradle
   - android
