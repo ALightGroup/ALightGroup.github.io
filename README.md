@@ -39,6 +39,12 @@ author: <a href="https://github.com/AriaLyy">AriaLyy</a>
 
 `revision`: 审校团队，同样支持a标签，如果没有审校团队，留空
 
+页脚效果
+![](https://raw.githubusercontent.com/ALightGroup/ALightGroup.github.io/alg-img/20230105175124.png)
+
+页头效果
+![](https://raw.githubusercontent.com/ALightGroup/ALightGroup.github.io/alg-img/20230105175155.png)
+
 如果需要分割文章，需要添加
 ```
 <!--more-->
