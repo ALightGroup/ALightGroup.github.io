@@ -1,0 +1,1743 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Compose 使用入门, ALG团队">
+    <meta name="description" content="概览Compose 是一种全新构建 Android 原生界面的组件，抛弃了传统的 xml 声明方式，直接在 kt 文件中声明调用构建界面。
+集成在模块 build.gradle 文件中添加
+android &amp;#123;
+    buildF">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Compose 使用入门 | ALG团队</title>
+    <link rel="icon" type="image/png" href="/logo.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">ALG团队</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">ALG团队</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/ALightGroup/MetaBox" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/ALightGroup/MetaBox" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Compose 使用入门</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Compose/">
+                                <span class="chip bg-color">Compose</span>
+                            </a>
+                        
+                            <a href="/tags/android/">
+                                <span class="chip bg-color">android</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Compose/" class="post-category">
+                                Compose
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-02-01
+                </div>
+                
+
+                
+                    <div class="post-date info-break-policy">
+                        <i class="fas fa-user"></i> 作者:&nbsp;&nbsp;
+                        <a target="_blank" rel="noopener" href="https://https://github.com/MemoryLimitExceeded">MemoryLimitExceeded</a>
+                    </div>
+                
+
+                
+                    <div class="post-date info-break-policy">
+                        <i class="fa-solid fa-user-group"></i> 审校:&nbsp;&nbsp;
+                        <a target="_blank" rel="noopener" href="https://github.com/ALightGroup">ALG</a>
+                    </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    14 分
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>Compose 是一种全新构建 Android 原生界面的组件，抛弃了传统的 xml 声明方式，直接在 kt 文件中声明调用构建界面。</p>
+<h2 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h2><p>在模块 build.gradle 文件中添加</p>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">android <span class="token punctuation">&#123;</span>
+    buildFeatures <span class="token punctuation">&#123;</span>
+        compose <span class="token boolean">true</span>
+    <span class="token punctuation">&#125;</span>
+    composeOptions <span class="token punctuation">&#123;</span>
+        kotlinCompilerExtensionVersion <span class="token operator">=</span> <span class="token interpolation-string"><span class="token string">"1.3.2"</span></span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>代码块 composeOptions 中定义的 Kotlin 编译器扩展版本需要与使用的 Kotlin 版本对应，对应关系表查看<a target="_blank" rel="noopener" href="https://developer.android.google.cn/jetpack/androidx/releases/compose-kotlin">兼容性对应图</a></p>
+<p>之后添加以下依赖</p>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">dependencies <span class="token punctuation">&#123;</span>
+
+    <span class="token comment">// 必选项</span>
+    <span class="token comment">// Compose 编程模型和状态管理的基本构建块，以及 Compose Compiler 插件针对的核心运行时。</span>
+    implementation <span class="token interpolation-string"><span class="token string">"androidx.compose.runtime:runtime"</span></span>
+    <span class="token comment">// 借助 Kotlin 编译器插件，转换 @Composable functions（可组合函数）并启用优化功能。</span>
+    implementation <span class="token interpolation-string"><span class="token string">"androidx.compose.compiler:compiler"</span></span>
+    <span class="token comment">// 与设备互动所需的 Compose UI 的基本组件，包括布局、绘图和输入。</span>
+    implementation <span class="token interpolation-string"><span class="token string">"androidx.compose.ui:ui"</span></span>
+    <span class="token comment">// 使用 Material Design 组件构建 Jetpack Compose 界面。</span>
+    implementation <span class="token interpolation-string"><span class="token string">"androidx.compose.material:material"</span></span>
+    <span class="token comment">// 使用现成可用的构建块编写 Jetpack Compose 应用，还可扩展 Foundation 以构建您自己的设计系统元素。</span>
+    implementation <span class="token interpolation-string"><span class="token string">"androidx.compose.foundation:foundation"</span></span>
+
+    <span class="token comment">// 可选项</span>
+    <span class="token comment">// Android Studio 预览支持</span>
+    implementation <span class="token interpolation-string"><span class="token string">"androidx.compose.ui:ui-tooling-preview"</span></span>
+    implementation <span class="token interpolation-string"><span class="token string">"androidx.compose.ui:ui-tooling"</span></span>
+    <span class="token comment">// compose Activity</span>
+    implementation <span class="token interpolation-string"><span class="token string">"androidx.activity:activity-compose"</span></span>
+    <span class="token comment">// compose ViewModels</span>
+    implementation <span class="token interpolation-string"><span class="token string">"androidx.lifecycle:lifecycle-viewmodel-compose"</span></span>
+    <span class="token comment">// compose LiveData</span>
+    implementation <span class="token interpolation-string"><span class="token string">"androidx.compose.runtime:runtime-livedata"</span></span>
+    <span class="token comment">// compose constraintlayout</span>
+    implementation <span class="token interpolation-string"><span class="token string">"androidx.constraintlayout:constraintlayout-compose"</span></span>
+    <span class="token comment">// compose Navigation</span>
+    implementation <span class="token interpolation-string"><span class="token string">"androidx.navigation:navigation-compose"</span></span>
+    <span class="token comment">// compose glide</span>
+    implementation <span class="token interpolation-string"><span class="token string">"com.github.bumptech.glide:compose"</span></span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>可通过引入 BoM 库进行依赖的版本管理，在进行依赖时仅需关注 BoM 库版本即可。</p>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">dependencies <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 引入 BoM 库</span>
+    implementation <span class="token function">platform</span><span class="token punctuation">(</span><span class="token string">'androidx.compose:compose-bom:2022.12.00'</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// 将 BoM 库中的该依赖版本替换为 1.1.0-alpha01</span>
+    implementation <span class="token string">'androidx.compose.material3:material3:1.1.0-alpha01'</span>
+
+    <span class="token comment">// 添加 BoM 库中包含的依赖</span>
+    implementation <span class="token string">'androidx.compose.foundation:foundation'</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如需了解哪些 Compose 库版本已映射到特定 BoM 版本，请查看 <a target="_blank" rel="noopener" href="https://developer.android.google.cn/jetpack/compose/setup#bom-version-mapping">BoM 到库的版本映射</a>。</p>
+<h2 id="引入使用"><a href="#引入使用" class="headerlink" title="引入使用"></a>引入使用</h2><h3 id="1-androidx-activity-ComponentActivity"><a href="#1-androidx-activity-ComponentActivity" class="headerlink" title="1.androidx.activity.ComponentActivity"></a>1.androidx.activity.ComponentActivity</h3><p>通常情况下使用可选依赖的 compose Activity 中，ComponentActivity.setContent() 会做为 ComposeView 的入口</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// androidx.activity.compose.ComponentActivity.kt</span>
+<span class="token keyword">public</span> <span class="token keyword">fun</span> ComponentActivity<span class="token punctuation">.</span><span class="token function">setContent</span><span class="token punctuation">(</span>
+    parent<span class="token operator">:</span> CompositionContext<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    content<span class="token operator">:</span> <span class="token annotation builtin">@Composable</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit
+<span class="token punctuation">)</span>
+<span class="token comment">// MainActivity.kt</span>
+<span class="token keyword">class</span> MainActivity <span class="token operator">:</span> androidx<span class="token punctuation">.</span>activity<span class="token punctuation">.</span><span class="token function">ComponentActivity</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token operator">:</span> Bundle<span class="token operator">?</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span>
+        setContent <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 你的界面</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-ComposeView-做为-View"><a href="#2-ComposeView-做为-View" class="headerlink" title="2.ComposeView 做为 View"></a>2.ComposeView 做为 View</h3><pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// ComposeViewFragment.kt</span>
+<span class="token keyword">class</span> ComposeViewFragment <span class="token operator">:</span> <span class="token function">Fragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">onCreateView</span><span class="token punctuation">(</span>
+        inflater<span class="token operator">:</span> LayoutInflater<span class="token punctuation">,</span>
+        container<span class="token operator">:</span> ViewGroup<span class="token operator">?</span><span class="token punctuation">,</span>
+        savedInstanceState<span class="token operator">:</span> Bundle<span class="token operator">?</span>
+    <span class="token punctuation">)</span><span class="token operator">:</span> View <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token function">ComposeView</span><span class="token punctuation">(</span><span class="token function">requireContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">&#123;</span>
+            setContent <span class="token punctuation">&#123;</span>
+                <span class="token comment">// 你的界面</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// XmlFragment.kt</span>
+<span class="token keyword">class</span> XmlFragment <span class="token operator">:</span> <span class="token function">Fragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">onCreateView</span><span class="token punctuation">(</span>
+        inflater<span class="token operator">:</span> LayoutInflater<span class="token punctuation">,</span>
+        container<span class="token operator">:</span> ViewGroup<span class="token operator">?</span><span class="token punctuation">,</span>
+        savedInstanceState<span class="token operator">:</span> Bundle<span class="token operator">?</span>
+    <span class="token punctuation">)</span><span class="token operator">:</span> View <span class="token punctuation">&#123;</span>
+        <span class="token keyword">val</span> rootView <span class="token operator">=</span> LayoutInflater<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout_fragment_xml<span class="token punctuation">,</span> container<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+        <span class="token keyword">val</span> composeView <span class="token operator">=</span> rootView<span class="token punctuation">.</span>findViewById<span class="token operator">&lt;</span>ComposeView<span class="token operator">></span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>compose_view<span class="token punctuation">)</span>
+        composeView<span class="token punctuation">.</span><span class="token function">setContent</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 你的界面</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> rootView
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>这种方式在部分场景下会报 java.lang.IllegalStateException: ViewTreeLifecycleOwner not found from androidx.compose.ui.platform.ComposeView，比如 dialog.setContentView(ComposeView(Context))</p>
+<p>使用过程中请注意。</p>
+</blockquote>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p>Jetpack Compose 在执行可组合项构建界面时被称之为组合，组合又分为<strong>初始组合</strong>和<strong>重组</strong>。</p>
+<p><strong>初始组合</strong>：首次运行可组合项的组合。</p>
+<p><strong>重组</strong>：因数据源发生变化而进行的组合。</p>
+<p>默认情况下的 Jetpack Compose 仅会进行一次组合，因为此时的数据源对于它来说是常量，即便是在外部修改数据源也不会发生重组进行界面更新。</p>
+<p>从而就需要引入 mutableStateOf 来修饰数据源告诉 Jetpack Compose 这是一个变化的数据，之后每当数据源变更时就会使得依赖该数据源的可组合项进行重组。</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Composable</span>
+<span class="token keyword">fun</span> <span class="token function">MyText</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> text <span class="token operator">=</span> <span class="token function">mutableStateOf</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"哈哈哈"</span></span><span class="token punctuation">)</span>
+    <span class="token function">Text</span><span class="token punctuation">(</span>
+        text <span class="token operator">=</span> text<span class="token punctuation">,</span>
+        modifier <span class="token operator">=</span> Modifier<span class="token punctuation">.</span><span class="token function">clickable</span> <span class="token punctuation">&#123;</span>
+            text <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"呵呵"</span></span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://raw.githubusercontent.com/ALightGroup/ALightGroup.github.io/alg-img/7be6fa6f-3272-4bcf-b10d-aa971950d969.gif"></p>
+<p>不过这种方式还不能实现数据源更新界面也随之更新，这是因为进行重组的时候 text 仍会被 “哈哈哈” 所覆盖，还需要加上 remember API 将对象进行存储。</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Composable</span>
+<span class="token keyword">fun</span> <span class="token function">MyText</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> text <span class="token operator">=</span> remember <span class="token punctuation">&#123;</span><span class="token function">mutableStateOf</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"哈哈哈"</span></span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span>
+    <span class="token function">Text</span><span class="token punctuation">(</span>
+        text <span class="token operator">=</span> text<span class="token punctuation">,</span>
+        modifier <span class="token operator">=</span> Modifier<span class="token punctuation">.</span><span class="token function">clickable</span> <span class="token punctuation">&#123;</span>
+            text <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"呵呵"</span></span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>由 remember 修饰时里面的数据在进行重组的时候就不会被重新初始化，从而能够保证更新的数据能够正确展示到界面中。</p>
+<p><img src="https://raw.githubusercontent.com/ALightGroup/ALightGroup.github.io/alg-img/c6cb991b-c833-45b5-81e5-5f0f9de837d0.gif"></p>
+<h2 id="基本组件"><a href="#基本组件" class="headerlink" title="基本组件"></a>基本组件</h2><p>Compose 的基本组件可分为布局和控件，常用布局有：</p>
+<ol>
+<li>Box</li>
+<li>Row &#x2F; Column</li>
+<li>Constraintlayout (需要依赖 compose constraintlayout)</li>
+<li>LazyRow &#x2F; LazyColumn</li>
+</ol>
+<p>常用控件有：</p>
+<ol>
+<li>Text</li>
+<li>TextField</li>
+<li>Image</li>
+<li>Dialog</li>
+</ol>
+<h3 id="常用布局"><a href="#常用布局" class="headerlink" title="常用布局"></a>常用布局</h3><h4 id="Box"><a href="#Box" class="headerlink" title="Box"></a>Box</h4><p>可看做是 Compose 版的 FrameLayout</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// Box.kt</span>
+<span class="token annotation builtin">@Composable</span>
+<span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token function">Box</span><span class="token punctuation">(</span>
+    modifier<span class="token operator">:</span> Modifier <span class="token operator">=</span> Modifier<span class="token punctuation">,</span>
+    contentAlignment<span class="token operator">:</span> Alignment <span class="token operator">=</span> Alignment<span class="token punctuation">.</span>TopStart<span class="token punctuation">,</span>
+    propagateMinConstraints<span class="token operator">:</span> Boolean <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    content<span class="token operator">:</span> <span class="token annotation builtin">@Composable</span> BoxScope<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit
+<span class="token punctuation">)</span>
+
+<span class="token comment">// 使用</span>
+Box<span class="token punctuation">&#123;</span>
+    <span class="token comment">// 你的内容</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>modifier：修饰符</p>
+<p>contentAlignment：内容对齐方法，等价于 android:gravity</p>
+<p>propagateMinConstraints：是否将传入的最小值约束传递给内容。</p>
+<p>content：Box 中的内容</p>
+<h4 id="Row-x2F-Column"><a href="#Row-x2F-Column" class="headerlink" title="Row &#x2F; Column"></a>Row &#x2F; Column</h4><p>两个可分别看做 LinearLayout 的水平排列和垂直排列</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// Row.kt</span>
+<span class="token annotation builtin">@Composable</span>
+<span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token function">Row</span><span class="token punctuation">(</span>
+    modifier<span class="token operator">:</span> Modifier <span class="token operator">=</span> Modifier<span class="token punctuation">,</span>
+    horizontalArrangement<span class="token operator">:</span> Arrangement<span class="token punctuation">.</span>Horizontal <span class="token operator">=</span> Arrangement<span class="token punctuation">.</span>Start<span class="token punctuation">,</span>
+    verticalAlignment<span class="token operator">:</span> Alignment<span class="token punctuation">.</span>Vertical <span class="token operator">=</span> Alignment<span class="token punctuation">.</span>Top<span class="token punctuation">,</span>
+    content<span class="token operator">:</span> <span class="token annotation builtin">@Composable</span> RowScope<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit
+<span class="token punctuation">)</span>
+<span class="token comment">// Column.kt</span>
+<span class="token annotation builtin">@Composable</span>
+<span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token function">Column</span><span class="token punctuation">(</span>
+    modifier<span class="token operator">:</span> Modifier <span class="token operator">=</span> Modifier<span class="token punctuation">,</span>
+    verticalArrangement<span class="token operator">:</span> Arrangement<span class="token punctuation">.</span>Vertical <span class="token operator">=</span> Arrangement<span class="token punctuation">.</span>Top<span class="token punctuation">,</span>
+    horizontalAlignment<span class="token operator">:</span> Alignment<span class="token punctuation">.</span>Horizontal <span class="token operator">=</span> Alignment<span class="token punctuation">.</span>Start<span class="token punctuation">,</span>
+    content<span class="token operator">:</span> <span class="token annotation builtin">@Composable</span> ColumnScope<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit
+<span class="token punctuation">)</span>
+<span class="token comment">// 使用</span>
+Row<span class="token punctuation">&#123;</span>
+    <span class="token comment">// 你的内容</span>
+<span class="token punctuation">&#125;</span>
+Column<span class="token punctuation">&#123;</span>
+    <span class="token comment">// 你的内容</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>modifier：修饰符</p>
+<p>horizontalArrangement&#x2F;verticalArrangement：水平&#x2F;垂直排列方式</p>
+<p>verticalAlignment&#x2F;horizontalAlignment：内容垂直&#x2F;水平对齐方式，等价于垂直&#x2F;水平方向上的 android:gravity</p>
+<p>content：内容</p>
+<h4 id="Constraintlayout"><a href="#Constraintlayout" class="headerlink" title="Constraintlayout"></a>Constraintlayout</h4><p>Compose 版的约束布局</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// Constraintlayout.kt</span>
+<span class="token annotation builtin">@Composable</span>
+<span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token function">ConstraintLayout</span><span class="token punctuation">(</span>
+    modifier<span class="token operator">:</span> Modifier <span class="token operator">=</span> Modifier<span class="token punctuation">,</span>
+    optimizationLevel<span class="token operator">:</span> Int <span class="token operator">=</span> Optimizer<span class="token punctuation">.</span>OPTIMIZATION_STANDARD<span class="token punctuation">,</span>
+    <span class="token keyword">crossinline</span> content<span class="token operator">:</span> <span class="token annotation builtin">@Composable</span> ConstraintLayoutScope<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>modifier：修饰符</p>
+<p>optimizationLevel：（作用未知）</p>
+<p>content：内容</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// 使用</span>
+ConstraintLayout <span class="token punctuation">&#123;</span>
+    <span class="token keyword">val</span> <span class="token punctuation">(</span>title<span class="token punctuation">,</span> content<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">createRefs</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token function">Text</span><span class="token punctuation">(</span>text <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">""</span></span><span class="token punctuation">,</span>
+        modifier <span class="token operator">=</span> Modifier
+            <span class="token punctuation">.</span><span class="token function">constrainAs</span><span class="token punctuation">(</span>title<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                top<span class="token punctuation">.</span><span class="token function">linkTo</span><span class="token punctuation">(</span>parent<span class="token punctuation">.</span>top<span class="token punctuation">)</span>
+                start<span class="token punctuation">.</span><span class="token function">linkTo</span><span class="token punctuation">(</span>parent<span class="token punctuation">.</span>start<span class="token punctuation">)</span>
+                end<span class="token punctuation">.</span><span class="token function">linkTo</span><span class="token punctuation">(</span>parent<span class="token punctuation">.</span>end<span class="token punctuation">)</span>
+                <span class="token comment">// 在满足约束条件下宽/高尽可能的大</span>
+                width <span class="token operator">=</span> Dimension<span class="token punctuation">.</span>fillToConstraints
+                height <span class="token operator">=</span> Dimension<span class="token punctuation">.</span>fillToConstraints
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+    <span class="token function">Text</span><span class="token punctuation">(</span>text <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">""</span></span><span class="token punctuation">,</span>
+        modifier <span class="token operator">=</span> Modifier
+            <span class="token punctuation">.</span><span class="token function">constrainAs</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                top<span class="token punctuation">.</span><span class="token function">linkTo</span><span class="token punctuation">(</span>title<span class="token punctuation">.</span>bottom<span class="token punctuation">)</span>
+                start<span class="token punctuation">.</span><span class="token function">linkTo</span><span class="token punctuation">(</span>parent<span class="token punctuation">.</span>start<span class="token punctuation">)</span>
+                end<span class="token punctuation">.</span><span class="token function">linkTo</span><span class="token punctuation">(</span>parent<span class="token punctuation">.</span>end<span class="token punctuation">)</span>
+                <span class="token comment">// 在满足约束条件下宽/高尽可能的大</span>
+                width <span class="token operator">=</span> Dimension<span class="token punctuation">.</span>fillToConstraints
+                height <span class="token operator">=</span> Dimension<span class="token punctuation">.</span>fillToConstraints
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>首先调用 createRefs() 创建需要进行约束控件的引用，之后通过 Modifier.constrainAs() 将当前控件与引用进行绑定，之后在方法后面的 lambda 中采用类似 xml 中使用约束布局的方法进行约束。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.android.google.cn/jetpack/compose/layouts/constraintlayout?hl=zh-cn">Compose 中的 ConstraintLayout</a></p>
+</blockquote>
+<h4 id="LazyRow-x2F-LazyColumn"><a href="#LazyRow-x2F-LazyColumn" class="headerlink" title="LazyRow &#x2F; LazyColumn"></a>LazyRow &#x2F; LazyColumn</h4><p>两个可分别看做 RecyclerView 的水平排列和垂直排列</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// LazyDsl.kt</span>
+<span class="token annotation builtin">@Composable</span>
+<span class="token keyword">fun</span> <span class="token function">LazyRow</span><span class="token punctuation">(</span>
+    modifier<span class="token operator">:</span> Modifier <span class="token operator">=</span> Modifier<span class="token punctuation">,</span>
+    state<span class="token operator">:</span> LazyListState <span class="token operator">=</span> <span class="token function">rememberLazyListState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    contentPadding<span class="token operator">:</span> PaddingValues <span class="token operator">=</span> <span class="token function">PaddingValues</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">.</span>dp<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    reverseLayout<span class="token operator">:</span> Boolean <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    horizontalArrangement<span class="token operator">:</span> Arrangement<span class="token punctuation">.</span>Horizontal <span class="token operator">=</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>reverseLayout<span class="token punctuation">)</span> Arrangement<span class="token punctuation">.</span>Start <span class="token keyword">else</span> Arrangement<span class="token punctuation">.</span>End<span class="token punctuation">,</span>
+    verticalAlignment<span class="token operator">:</span> Alignment<span class="token punctuation">.</span>Vertical <span class="token operator">=</span> Alignment<span class="token punctuation">.</span>Top<span class="token punctuation">,</span>
+    flingBehavior<span class="token operator">:</span> FlingBehavior <span class="token operator">=</span> ScrollableDefaults<span class="token punctuation">.</span><span class="token function">flingBehavior</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    userScrollEnabled<span class="token operator">:</span> Boolean <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    content<span class="token operator">:</span> LazyListScope<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit
+<span class="token punctuation">)</span>
+<span class="token annotation builtin">@Composable</span>
+<span class="token keyword">fun</span> <span class="token function">LazyColumn</span><span class="token punctuation">(</span>
+    modifier<span class="token operator">:</span> Modifier <span class="token operator">=</span> Modifier<span class="token punctuation">,</span>
+    state<span class="token operator">:</span> LazyListState <span class="token operator">=</span> <span class="token function">rememberLazyListState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    contentPadding<span class="token operator">:</span> PaddingValues <span class="token operator">=</span> <span class="token function">PaddingValues</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">.</span>dp<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    reverseLayout<span class="token operator">:</span> Boolean <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    verticalArrangement<span class="token operator">:</span> Arrangement<span class="token punctuation">.</span>Vertical <span class="token operator">=</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>reverseLayout<span class="token punctuation">)</span> Arrangement<span class="token punctuation">.</span>Top <span class="token keyword">else</span> Arrangement<span class="token punctuation">.</span>Bottom<span class="token punctuation">,</span>
+    horizontalAlignment<span class="token operator">:</span> Alignment<span class="token punctuation">.</span>Horizontal <span class="token operator">=</span> Alignment<span class="token punctuation">.</span>Start<span class="token punctuation">,</span>
+    flingBehavior<span class="token operator">:</span> FlingBehavior <span class="token operator">=</span> ScrollableDefaults<span class="token punctuation">.</span><span class="token function">flingBehavior</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    userScrollEnabled<span class="token operator">:</span> Boolean <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    content<span class="token operator">:</span> LazyListScope<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>modifier：修饰符</p>
+<p>state：用于控制或观察列表状态的对象</p>
+<p>contentPadding：内边距</p>
+<p>reverseLayout：是否反向排列列表</p>
+<p>horizontalArrangement&#x2F;verticalArrangement：水平&#x2F;垂直排列方式</p>
+<p>verticalAlignment&#x2F;horizontalAlignment：内容垂直&#x2F;水平对齐方式，等价于垂直&#x2F;水平方向上的 android:gravity</p>
+<p>flingBehavior：惯性滑动行为</p>
+<p>userScrollEnabled：是否允许进行触摸滑动</p>
+<p>content：内容</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// 使用</span>
+LazyRow <span class="token punctuation">&#123;</span>
+    item <span class="token punctuation">&#123;</span>
+        <span class="token comment">// item 1</span>
+    <span class="token punctuation">&#125;</span>
+    item <span class="token punctuation">&#123;</span>
+        <span class="token comment">// item 2</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 添加一组 item</span>
+    list<span class="token punctuation">.</span><span class="token function">forEach</span> <span class="token punctuation">&#123;</span>
+        item <span class="token punctuation">&#123;</span>
+            <span class="token comment">// listItem</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 添加一组 item 的另一种方法</span>
+    <span class="token function">items</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token keyword">data</span> <span class="token operator">-></span>
+        <span class="token comment">// listItem</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+LazyColumn <span class="token punctuation">&#123;</span>
+    item <span class="token punctuation">&#123;</span>
+        <span class="token comment">// item 1</span>
+    <span class="token punctuation">&#125;</span>
+    item <span class="token punctuation">&#123;</span>
+        <span class="token comment">// item 2</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 添加一组 item</span>
+    list<span class="token punctuation">.</span><span class="token function">forEach</span> <span class="token punctuation">&#123;</span>
+        item <span class="token punctuation">&#123;</span>
+            <span class="token comment">// listItem</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 添加一组 item 的另一种方法</span>
+    <span class="token function">items</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token keyword">data</span> <span class="token operator">-></span>
+        <span class="token comment">// listItem</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.android.google.cn/jetpack/compose/lists?hl=zh-cn#lazy">延迟列表</a> </p>
+</blockquote>
+<h3 id="常用控件"><a href="#常用控件" class="headerlink" title="常用控件"></a>常用控件</h3><h4 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h4><p>文本框</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// Text.kt</span>
+<span class="token annotation builtin">@Composable</span>
+<span class="token keyword">fun</span> <span class="token function">Text</span><span class="token punctuation">(</span>
+    text<span class="token operator">:</span> String<span class="token punctuation">,</span>
+    modifier<span class="token operator">:</span> Modifier <span class="token operator">=</span> Modifier<span class="token punctuation">,</span>
+    color<span class="token operator">:</span> Color <span class="token operator">=</span> Color<span class="token punctuation">.</span>Unspecified<span class="token punctuation">,</span>
+    fontSize<span class="token operator">:</span> TextUnit <span class="token operator">=</span> TextUnit<span class="token punctuation">.</span>Unspecified<span class="token punctuation">,</span>
+    fontStyle<span class="token operator">:</span> FontStyle<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    fontWeight<span class="token operator">:</span> FontWeight<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    fontFamily<span class="token operator">:</span> FontFamily<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    letterSpacing<span class="token operator">:</span> TextUnit <span class="token operator">=</span> TextUnit<span class="token punctuation">.</span>Unspecified<span class="token punctuation">,</span>
+    textDecoration<span class="token operator">:</span> TextDecoration<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    textAlign<span class="token operator">:</span> TextAlign<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    lineHeight<span class="token operator">:</span> TextUnit <span class="token operator">=</span> TextUnit<span class="token punctuation">.</span>Unspecified<span class="token punctuation">,</span>
+    overflow<span class="token operator">:</span> TextOverflow <span class="token operator">=</span> TextOverflow<span class="token punctuation">.</span>Clip<span class="token punctuation">,</span>
+    softWrap<span class="token operator">:</span> Boolean <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    maxLines<span class="token operator">:</span> Int <span class="token operator">=</span> Int<span class="token punctuation">.</span>MAX_VALUE<span class="token punctuation">,</span>
+    inlineContent<span class="token operator">:</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> InlineTextContent<span class="token operator">></span> <span class="token operator">=</span> <span class="token function">mapOf</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    onTextLayout<span class="token operator">:</span> <span class="token punctuation">(</span>TextLayoutResult<span class="token punctuation">)</span> <span class="token operator">-></span> Unit <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    style<span class="token operator">:</span> TextStyle <span class="token operator">=</span> LocalTextStyle<span class="token punctuation">.</span>current
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>text：文本内容</p>
+<p>modifier：修饰符</p>
+<p>color：文本颜色</p>
+<p>fontSize：字体大小</p>
+<p>fontStyle：字体风格，有正常和斜体</p>
+<p>fontWeight：字重，范围 1 到 1000</p>
+<p>fontFamily：字体</p>
+<p>letterSpacing：字宽</p>
+<p>textDecoration：文字上的装饰，例如删除线、下划线</p>
+<p>textAlign：文字内容对齐方法</p>
+<p>lineHeight：行高</p>
+<p>overflow：与 softWrap 配置文本换行行为</p>
+<p>softWrap：与 overflow 配置文本换行行为</p>
+<p>maxLines：最大行数</p>
+<p>inlineContent：用于在文本布局中插入可组合元素</p>
+<p>onTextLayout：在 compose 进行布局时可通过回调提供的 TextLayoutResult 对象来对文本显示进行修改</p>
+<p>style：文本风格，优先生效上面的配置信息</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// 使用</span>
+<span class="token comment">// 普通文本</span>
+<span class="token function">Text</span><span class="token punctuation">(</span>text <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"你的内容"</span></span><span class="token punctuation">)</span>
+<span class="token comment">// 资源字符串</span>
+<span class="token function">Text</span><span class="token punctuation">(</span>text <span class="token operator">=</span> <span class="token function">stringResource</span><span class="token punctuation">(</span>id <span class="token operator">=</span> R<span class="token punctuation">.</span>string<span class="token punctuation">.</span>content<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.android.google.cn/jetpack/compose/text?hl=zh-cn#displaying-text">Compose 中的文字</a> </p>
+</blockquote>
+<h4 id="TextField"><a href="#TextField" class="headerlink" title="TextField"></a>TextField</h4><p>输入框</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// TextField.kt</span>
+<span class="token annotation builtin">@Composable</span>
+<span class="token keyword">fun</span> <span class="token function">TextField</span><span class="token punctuation">(</span>
+    value<span class="token operator">:</span> String<span class="token punctuation">,</span>
+    onValueChange<span class="token operator">:</span> <span class="token punctuation">(</span>String<span class="token punctuation">)</span> <span class="token operator">-></span> Unit<span class="token punctuation">,</span>
+    modifier<span class="token operator">:</span> Modifier <span class="token operator">=</span> Modifier<span class="token punctuation">,</span>
+    enabled<span class="token operator">:</span> Boolean <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    readOnly<span class="token operator">:</span> Boolean <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    textStyle<span class="token operator">:</span> TextStyle <span class="token operator">=</span> LocalTextStyle<span class="token punctuation">.</span>current<span class="token punctuation">,</span>
+    label<span class="token operator">:</span> <span class="token annotation builtin">@Composable</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit<span class="token punctuation">)</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    placeholder<span class="token operator">:</span> <span class="token annotation builtin">@Composable</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit<span class="token punctuation">)</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    leadingIcon<span class="token operator">:</span> <span class="token annotation builtin">@Composable</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit<span class="token punctuation">)</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    trailingIcon<span class="token operator">:</span> <span class="token annotation builtin">@Composable</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit<span class="token punctuation">)</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    isError<span class="token operator">:</span> Boolean <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    visualTransformation<span class="token operator">:</span> VisualTransformation <span class="token operator">=</span> VisualTransformation<span class="token punctuation">.</span>None<span class="token punctuation">,</span>
+    keyboardOptions<span class="token operator">:</span> KeyboardOptions <span class="token operator">=</span> KeyboardOptions<span class="token punctuation">.</span>Default<span class="token punctuation">,</span>
+    keyboardActions<span class="token operator">:</span> KeyboardActions <span class="token operator">=</span> <span class="token function">KeyboardActions</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    singleLine<span class="token operator">:</span> Boolean <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    maxLines<span class="token operator">:</span> Int <span class="token operator">=</span> Int<span class="token punctuation">.</span>MAX_VALUE<span class="token punctuation">,</span>
+    interactionSource<span class="token operator">:</span> MutableInteractionSource <span class="token operator">=</span> remember <span class="token punctuation">&#123;</span> <span class="token function">MutableInteractionSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    shape<span class="token operator">:</span> Shape <span class="token operator">=</span>
+        MaterialTheme<span class="token punctuation">.</span>shapes<span class="token punctuation">.</span>small<span class="token punctuation">.</span><span class="token function">copy</span><span class="token punctuation">(</span>bottomEnd <span class="token operator">=</span> ZeroCornerSize<span class="token punctuation">,</span> bottomStart <span class="token operator">=</span> ZeroCornerSize<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    colors<span class="token operator">:</span> TextFieldColors <span class="token operator">=</span> TextFieldDefaults<span class="token punctuation">.</span><span class="token function">textFieldColors</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>value： 输入框中的初始文本</p>
+<p>onValueChange：输入过程中文本变更时的回调</p>
+<p>modifier：修饰符</p>
+<p>enabled：是否可以获取焦点</p>
+<p>readOnly：输入框是否为不可编辑，与 enabled 的区别是即使为不可编辑仍然可以进行选择文字复制。</p>
+<p>textStyle：文本风格</p>
+<p>label：显示在文本字段内的可选标签，未获得焦点时呈现</p>
+<p>placeholder：获得焦点时的默认呈现类似Tint的效果</p>
+<p>leadingIcon：输入框前部的图标</p>
+<p>trailingIcon：输入框后部的图标</p>
+<p>isError：输入内容是否错误，如果为 true，则 label，Icon 等会相应的展示错误的显示状态</p>
+<p>visualTransformation：内容显示转变，例如输入密码时可以变成特定效果</p>
+<p>keyboardOptions：软键盘类型</p>
+<p>keyboardActions：等价于 android:imeAction</p>
+<p>singleLine：是否单行</p>
+<p>maxLines：输入框最大行数，如果 singleLine 设置为 true，这个参数将被忽略</p>
+<p>interactionSource：与输入框的交互行为</p>
+<p>shape：输入框的形状</p>
+<p>colors：文本、内容(包括标签、占位符、前面和后面的图标)和背景在不同状态下的颜色，类似 Android 的 ColorStateList</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// 使用</span>
+<span class="token function">TextField</span><span class="token punctuation">(</span>
+    value <span class="token operator">=</span> content<span class="token punctuation">,</span> 
+    onValueChange <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    shape <span class="token operator">=</span> <span class="token function">RoundedCornerShape</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">.</span>dp<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    colors <span class="token operator">=</span> TextFieldDefaults<span class="token punctuation">.</span><span class="token function">textFieldColors</span><span class="token punctuation">(</span>
+        backgroundColor <span class="token operator">=</span> <span class="token function">Color</span><span class="token punctuation">(</span>LocalContext<span class="token punctuation">.</span>current<span class="token punctuation">.</span><span class="token function">getColor</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>color<span class="token punctuation">.</span>gray_F8F8FA<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        disabledIndicatorColor <span class="token operator">=</span> Color<span class="token punctuation">.</span>Transparent<span class="token punctuation">,</span>
+        unfocusedIndicatorColor <span class="token operator">=</span> Color<span class="token punctuation">.</span>Transparent<span class="token punctuation">,</span>
+        focusedIndicatorColor <span class="token operator">=</span> Color<span class="token punctuation">.</span>Transparent<span class="token punctuation">,</span>
+        errorIndicatorColor <span class="token operator">=</span> Color<span class="token punctuation">.</span>Transparent
+    <span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.android.google.cn/jetpack/compose/text?hl=zh-cn#enter-modify-text">输入和修改文字</a> </p>
+</blockquote>
+<h4 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h4><p>图片控件</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// Image.kt</span>
+<span class="token annotation builtin">@Composable</span>
+<span class="token keyword">fun</span> <span class="token function">Image</span><span class="token punctuation">(</span>
+    painter<span class="token operator">:</span> Painter<span class="token punctuation">,</span>
+    contentDescription<span class="token operator">:</span> String<span class="token operator">?</span><span class="token punctuation">,</span>
+    modifier<span class="token operator">:</span> Modifier <span class="token operator">=</span> Modifier<span class="token punctuation">,</span>
+    alignment<span class="token operator">:</span> Alignment <span class="token operator">=</span> Alignment<span class="token punctuation">.</span>Center<span class="token punctuation">,</span>
+    contentScale<span class="token operator">:</span> ContentScale <span class="token operator">=</span> ContentScale<span class="token punctuation">.</span>Fit<span class="token punctuation">,</span>
+    alpha<span class="token operator">:</span> Float <span class="token operator">=</span> DefaultAlpha<span class="token punctuation">,</span>
+    colorFilter<span class="token operator">:</span> ColorFilter<span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">null</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>painter：绘制的图片，通常为 <a target="_blank" rel="noopener" href="https://developer.android.google.cn/jetpack/compose/graphics/images/compare?hl=zh-cn">ImageBitmap 与 ImageVector</a></p>
+<p>contentDescription：图片内容描述，用于 Android 辅助功能</p>
+<p>modifier：修饰符</p>
+<p>alignment：图片对齐方式</p>
+<p>contentScale：图片缩放方式</p>
+<p>alpha：图片透明度</p>
+<p>colorFilter：可通过该参数对图片进行着色</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// 使用</span>
+<span class="token comment">// 仅支持 jpg、svg、png 等常规图片</span>
+<span class="token function">Image</span><span class="token punctuation">(</span>
+    painter <span class="token operator">=</span> <span class="token function">painterResource</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>logo<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    contentDescription <span class="token operator">=</span> <span class="token keyword">null</span>
+<span class="token punctuation">)</span>
+<span class="token comment">// 需要支持 shape 的 drawable 场景</span>
+<span class="token keyword">val</span> drawable <span class="token operator">=</span> AppCompatResources<span class="token punctuation">.</span><span class="token function">getDrawable</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> R<span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>shape<span class="token punctuation">)</span>
+<span class="token function">Image</span><span class="token punctuation">(</span>
+    painter <span class="token operator">=</span> <span class="token function">rememberDrawablePainter</span><span class="token punctuation">(</span>drawable <span class="token operator">=</span> drawable<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    contentDescription <span class="token operator">=</span> <span class="token keyword">null</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.android.google.cn/jetpack/compose/graphics/images/loading?hl=zh-cn">加载图片</a>  </p>
+</blockquote>
+<h4 id="Dialog"><a href="#Dialog" class="headerlink" title="Dialog"></a>Dialog</h4><p>对话框</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// Dialog.kt</span>
+<span class="token annotation builtin">@Composable</span>
+<span class="token keyword">fun</span> <span class="token function">Dialog</span><span class="token punctuation">(</span>
+    onDismissRequest<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit<span class="token punctuation">,</span>
+    properties<span class="token operator">:</span> DialogProperties <span class="token operator">=</span> <span class="token function">DialogProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    content<span class="token operator">:</span> <span class="token annotation builtin">@Composable</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit
+<span class="token punctuation">)</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>onDismissRequest：需要退出对话框的回调，用于执行退出对话框</p>
+<p>properties：定制对话框的交互行为</p>
+<p>content：内容</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// 使用</span>
+<span class="token keyword">val</span> isShow <span class="token operator">=</span> remember <span class="token punctuation">&#123;</span><span class="token function">mutableStateOf</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span>
+<span class="token function">Dialog</span><span class="token punctuation">(</span>onDismissRequest <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    isShow<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">false</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 你的内容</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><p>修饰符可用来执行以下操作：</p>
+<ul>
+<li>设定控件的大小、布局、行为和外观等</li>
+<li>添加高级互动，如使元素可点击、可滚动、可拖动或可缩放</li>
+</ul>
+<p>下面列出几个常用的方法：</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin">Modifier
+    <span class="token punctuation">.</span><span class="token function">width</span><span class="token punctuation">(</span><span class="token punctuation">)</span>                  <span class="token comment">// 控件宽度</span>
+    <span class="token punctuation">.</span><span class="token function">height</span><span class="token punctuation">(</span><span class="token punctuation">)</span>                 <span class="token comment">// 控件高度</span>
+    <span class="token punctuation">.</span><span class="token function">fillMaxSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span>            <span class="token comment">// 宽高按照一定比例填充父布局 (0~1，默认填满)</span>
+    <span class="token punctuation">.</span><span class="token function">fillMaxWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span>           <span class="token comment">// 宽按照一定比例填充父布局 (0~1，默认填满)</span>
+    <span class="token punctuation">.</span><span class="token function">fillMaxHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span>          <span class="token comment">// 高按照一定比例填充父布局 (0~1，默认填满)</span>
+    <span class="token punctuation">.</span><span class="token function">padding</span><span class="token punctuation">(</span><span class="token punctuation">)</span>                <span class="token comment">// 控件边距</span>
+    <span class="token punctuation">.</span><span class="token function">border</span><span class="token punctuation">(</span><span class="token punctuation">)</span>                 <span class="token comment">// 控件边框</span>
+    <span class="token punctuation">.</span><span class="token function">background</span><span class="token punctuation">(</span><span class="token punctuation">)</span>             <span class="token comment">// 控件背景</span>
+    <span class="token punctuation">.</span><span class="token function">clickable</span><span class="token punctuation">(</span><span class="token punctuation">)</span>              <span class="token comment">// 添加点击事件</span>
+    <span class="token punctuation">.</span><span class="token function">constrainAs</span><span class="token punctuation">(</span><span class="token punctuation">)</span>            <span class="token comment">// 约束布局中设定约束</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>需要注意的是修饰符调用过程中顺序不同产生的影响不同，例如：</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Composable</span>
+<span class="token keyword">fun</span> <span class="token function">MyModifier1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">Row</span><span class="token punctuation">(</span>
+        horizontalArrangement <span class="token operator">=</span> Arrangement<span class="token punctuation">.</span>SpaceAround<span class="token punctuation">,</span>
+        verticalAlignment <span class="token operator">=</span> Alignment<span class="token punctuation">.</span>CenterVertically<span class="token punctuation">,</span>
+        modifier <span class="token operator">=</span> Modifier<span class="token punctuation">.</span><span class="token function">fillMaxSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">Box</span><span class="token punctuation">(</span>
+            modifier <span class="token operator">=</span> Modifier
+                <span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">.</span>dp<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">background</span><span class="token punctuation">(</span>
+                    color <span class="token operator">=</span> MaterialTheme<span class="token punctuation">.</span>colorScheme<span class="token punctuation">.</span>primary<span class="token punctuation">,</span>
+                    shape <span class="token operator">=</span> MaterialTheme<span class="token punctuation">.</span>shapes<span class="token punctuation">.</span>medium
+                <span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">clickable</span> <span class="token punctuation">&#123;</span>
+ 
+                <span class="token punctuation">&#125;</span>
+                <span class="token punctuation">.</span><span class="token function">padding</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">.</span>dp<span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+ 
+        <span class="token function">Box</span><span class="token punctuation">(</span>
+            modifier <span class="token operator">=</span> Modifier
+                <span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">.</span>dp<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">background</span><span class="token punctuation">(</span>
+                    color <span class="token operator">=</span> MaterialTheme<span class="token punctuation">.</span>colorScheme<span class="token punctuation">.</span>primary<span class="token punctuation">,</span>
+                    shape <span class="token operator">=</span> MaterialTheme<span class="token punctuation">.</span>shapes<span class="token punctuation">.</span>medium
+                <span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">padding</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">.</span>dp<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">clickable</span> <span class="token punctuation">&#123;</span>
+ 
+                <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://raw.githubusercontent.com/ALightGroup/ALightGroup.github.io/alg-img/29ae3dc8-de25-4e67-a741-f323b713c1d4.gif"></p>
+<h2 id="与其他-Jetpack-组件联动"><a href="#与其他-Jetpack-组件联动" class="headerlink" title="与其他 Jetpack 组件联动"></a>与其他 Jetpack 组件联动</h2><h3 id="ViewModel"><a href="#ViewModel" class="headerlink" title="ViewModel"></a>ViewModel</h3><p>使用时需要依赖</p>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">implementation <span class="token interpolation-string"><span class="token string">"androidx.lifecycle:lifecycle-viewmodel-compose"</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>然后在代码中引用</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">class</span> MyViewModel <span class="token operator">:</span> <span class="token function">ViewModel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">/*...*/</span> <span class="token punctuation">&#125;</span>
+<span class="token comment">// 方式 1</span>
+<span class="token annotation builtin">@Composable</span>
+<span class="token keyword">fun</span> <span class="token function">MyScreen</span><span class="token punctuation">(</span>
+    viewModel<span class="token operator">:</span> MyViewModel <span class="token operator">=</span> <span class="token function">viewModel</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">/* ... */</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>该 ViewModel 实例的生命周期跟随控件所依赖的 Activity 或者 Fragment 变化。</p>
+<h3 id="LiveData"><a href="#LiveData" class="headerlink" title="LiveData"></a>LiveData</h3><p>使用时需要依赖</p>
+<pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">implementation <span class="token interpolation-string"><span class="token string">"androidx.compose.runtime:runtime-livedata"</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>然后在代码中引用</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">val</span> liveDataState <span class="token operator">:</span> State<span class="token operator">&lt;</span>Any<span class="token operator">></span> <span class="token operator">=</span> viewModel<span class="token punctuation">.</span>liveData<span class="token punctuation">.</span><span class="token function">observeAsState</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>liveDataState<span class="token punctuation">.</span>data <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">// show error</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// show UI</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>通过这种方式引用每当 LiveData 持有的数据实例变化时就会发起一次重组，从而实现界面的实时更新。</p>
+<h3 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h3><p>使用 compose 的方式进行导航跳转</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">val</span> ROUTE1 <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"Route1"</span></span>
+<span class="token keyword">val</span> ROUTE2 <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"Route2"</span></span>
+<span class="token keyword">val</span> ROUTE3 <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"Route3"</span></span>
+<span class="token keyword">val</span> navController <span class="token operator">=</span> <span class="token function">rememberNavController</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token function">NavHost</span><span class="token punctuation">(</span>
+        modifier <span class="token operator">=</span> Modifier<span class="token punctuation">,</span>
+        navController <span class="token operator">=</span> navController<span class="token punctuation">,</span>
+        startDestination <span class="token operator">=</span> ROUTE1
+    <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">composable</span><span class="token punctuation">(</span>ROUTE1<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">Route1UI</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token function">composable</span><span class="token punctuation">(</span>ROUTE2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">Route2UI</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token function">composable</span><span class="token punctuation">(</span>ROUTE3<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">Route3UI</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 调用以下方法进行跳转</span>
+    <span class="token comment">// navController.navigate(ROUTE1)</span>
+    <span class="token comment">// navController.navigate(ROUTE2)</span>
+    <span class="token comment">// navController.navigate(ROUTE3)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>需要注意的是跳转的页面大小取决于 NavHost 所依赖父布局的大小。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer"><a target="_blank" rel="noopener" href="https://https://github.com/MemoryLimitExceeded">MemoryLimitExceeded</a></a>
+                </span>
+            </div>
+            
+            
+                <div class="reprint__author">
+                    <span class="reprint-meta" style="font-weight: bold;">
+                        <i class="fa-solid fa-user-group">
+                            审校:
+                        </i>
+                    </span>
+                    <span class="reprint-info">
+                        <a href="/about" rel="external nofollow noreferrer"><a target="_blank" rel="noopener" href="https://github.com/ALightGroup">ALG</a></a>
+                    </span>
+                </div>
+            
+            
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://alightgroup.github.io/2023/02/01/gradle/Compose%20%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/">https://alightgroup.github.io/2023/02/01/gradle/Compose%20%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a target="_blank" rel="noopener" href="https://github.com/ALightGroup">ALG</a>
+                    <!-- <a href="/about" target="_blank"><a target="_blank" rel="noopener" href="https://https://github.com/MemoryLimitExceeded">MemoryLimitExceeded</a></a> -->
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Compose/">
+                                    <span class="chip bg-color">Compose</span>
+                                </a>
+                            
+                                <a href="/tags/android/">
+                                    <span class="chip bg-color">android</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2023/02/01/gradle/Compose%20%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Compose 使用入门">
+                        
+                        <span class="card-title">Compose 使用入门</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Compose/" class="post-category">
+                                    Compose
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Compose/">
+                        <span class="chip bg-color">Compose</span>
+                    </a>
+                    
+                    <a href="/tags/android/">
+                        <span class="chip bg-color">android</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/12/28/gradle/Version%20Catalog/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Version Catalog(中央依赖声明，即：版本目录)">
+                        
+                        <span class="card-title">Version Catalog(中央依赖声明，即：版本目录)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            什么是版本目录1.版本目录简介Central declaration of dependencies （中央依赖声明，即：版本目录）是AGP7提供的一个新特性，用于管理项目中的依赖项列表，将依赖项表示为依赖声明，随后使用者可以直接在 bui
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/gradle/" class="post-category">
+                                    gradle
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/android/">
+                        <span class="chip bg-color">android</span>
+                    </a>
+                    
+                    <a href="/tags/gradle/">
+                        <span class="chip bg-color">gradle</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: ALG团队<br />'
+            + '文章作者: alg<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">alg</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/ALightGroup" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
