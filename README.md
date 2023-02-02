@@ -12,7 +12,14 @@ npm install hexo-generator-search --save
 npm i --save hexo-wordcount
 ```
 
+- 更新子模块
+
+```sh
+git submodule update --init --recursive
+```
+
 ### 2、clone 工程
+
 ```
 git clone https://github.com/ALightGroup/ALightGroup.github.io
 ```
