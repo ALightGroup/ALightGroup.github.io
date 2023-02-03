@@ -207,6 +207,22 @@ fun MyText() {
 
 ![](https://raw.githubusercontent.com/ALightGroup/ALightGroup.github.io/alg-img/c6cb991b-c833-45b5-81e5-5f0f9de837d0.gif)
 
+可组合项中支持使用 Android 原生控件：
+
+```kotlin
+// 在 Compose 中引入 AppCompatImageView
+AndroidView(factory = { context -> AppCompatImageView(context)})
+
+// AndroidView.android.kt
+@Composable
+@UiComposable
+fun <T : View> AndroidView(
+    factory: (Context) -> T,
+    modifier: Modifier = Modifier,
+    update: (T) -> Unit = NoOpUpdate
+)
+```
+
 ## 基本组件
 
 Compose 的基本组件可分为布局和控件，常用布局有：
