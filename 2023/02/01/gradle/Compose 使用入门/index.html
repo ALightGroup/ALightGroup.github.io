@@ -394,7 +394,7 @@ android &amp;#123;
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.1k
+                    3.2k
                 </div>
                 
 
@@ -565,6 +565,19 @@ android &amp;#123;
 
 <p>由 remember 修饰时里面的数据在进行重组的时候就不会被重新初始化，从而能够保证更新的数据能够正确展示到界面中。</p>
 <p><img src="https://raw.githubusercontent.com/ALightGroup/ALightGroup.github.io/alg-img/c6cb991b-c833-45b5-81e5-5f0f9de837d0.gif"></p>
+<p>可组合项中支持使用 Android 原生控件：</p>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// 在 Compose 中引入 AppCompatImageView</span>
+<span class="token function">AndroidView</span><span class="token punctuation">(</span>factory <span class="token operator">=</span> <span class="token punctuation">&#123;</span> context <span class="token operator">-></span> <span class="token function">AppCompatImageView</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+<span class="token comment">// AndroidView.android.kt</span>
+<span class="token annotation builtin">@Composable</span>
+<span class="token annotation builtin">@UiComposable</span>
+<span class="token keyword">fun</span> <span class="token operator">&lt;</span>T <span class="token operator">:</span> View<span class="token operator">></span> <span class="token function">AndroidView</span><span class="token punctuation">(</span>
+    factory<span class="token operator">:</span> <span class="token punctuation">(</span>Context<span class="token punctuation">)</span> <span class="token operator">-></span> T<span class="token punctuation">,</span>
+    modifier<span class="token operator">:</span> Modifier <span class="token operator">=</span> Modifier<span class="token punctuation">,</span>
+    update<span class="token operator">:</span> <span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-></span> Unit <span class="token operator">=</span> NoOpUpdate
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="基本组件"><a href="#基本组件" class="headerlink" title="基本组件"></a>基本组件</h2><p>Compose 的基本组件可分为布局和控件，常用布局有：</p>
 <ol>
 <li>Box</li>
