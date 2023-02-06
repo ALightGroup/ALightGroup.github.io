@@ -6,7 +6,7 @@ toc: true
 
 date: 2023-02-01 21:18:22
 
-author: <a href="https://https://github.com/MemoryLimitExceeded">MemoryLimitExceeded</a>
+author: <a href="https://github.com/MemoryLimitExceeded">MemoryLimitExceeded</a>
 
 revision: <a href="https://github.com/ALightGroup">ALG</a>
 
